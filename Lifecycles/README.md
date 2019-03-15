@@ -7,3 +7,19 @@ It's crucial to program your app **proactively** and **defensively**.
 - Defensive: Be aware of actions from the OS like restarting your app.  
 
 
+### Activity Lifecycle States
+- Created
+- Started
+- Resumed
+- Destroyed
+- Initialized
+
+### Activity Lifecycle Callbacks
+- onCreate
+- onStart
+- onResume
+- onDestroy
+- onPause
+- onStop
+- onRestart
+
