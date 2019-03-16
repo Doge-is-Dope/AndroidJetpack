@@ -17,12 +17,36 @@ It's crucial to program your app **proactively** and **defensively**.
 
 ### Activity Lifecycle Callbacks
 - onCreate
-- onStart
-- onResume
-- onDestroy
-- onPause
+- onStart: The activity is visible
+- onResume: The activity is visible and gains focus
+- onDestroy: The activity is shutdown and can be garbage collected
+- onPause: The activity is visible and loses focus
 - onStop
 - onRestart
+
+
+#### Case 1: Start an Activity
+```onCreate``` -> ```onStart``` -> ```onResume``` 
+
+#### Case 2.1: Press "Back" button
+```onPause``` -> ```onStop``` -> ```onDestroy```
+
+#### Case 2.2: Open the Activity again
+```onCreate``` -> ```onStart``` -> ```onResume``` 
+
+#### Case 3.1: Press "Home" button
+```onPause``` -> ```onStop```
+
+#### Case 3.2: Reopen the Activity from "Recent apps"
+```onRestart``` -> ```onStart``` -> ```onResume``` 
+
+
+#### Case 4.1: Open up a dialog
+```onPause```
+
+#### Case 4.2: Close the dialog by clicking outside of it
+```onResume```
+
 
 
 
