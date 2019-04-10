@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SelfTriage</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_view_triage_title">It only takes 3 minutes.</string>
+    <string name="text_view_triage_explanation">By answering the self-evaluation we can help you better before you arrive at ER</string>
+    <string name="button_text_begin">Begin</string>
+    <string name="button_text_submit">Submit</string>
+    <string name="text_view_triage_result_title">Result</string>
+    <string name="button_text_notify">I\'ve arrived</string>
+
+    <string name="text_submitted_automatically">The evaluation has been submitted automatically!</string>
+</resources>

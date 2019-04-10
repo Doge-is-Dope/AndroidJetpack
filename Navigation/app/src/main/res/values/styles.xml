@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:fontFamily">@font/work_sans</item>
+    </style>
+
+    <!-- Training & Survey Main Activity -->
+    <style name="feature">
+        <item name="android:paddingEnd">44dp</item>
+        <item name="android:paddingStart">44dp</item>
+    </style>
+
+    <style name="feature.featureTitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/work_sans_bold</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="feature.featureExplanationText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:lineSpacingExtra">@dimen/line_space_explanation</item>
+    </style>
+
+    <style name="feature.result">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/work_sans_bold</item>
+        <item name="android:textSize">64sp</item>
+    </style>
+
+    <style name="feature.resultExplanation">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/work_sans_bold</item>
+        <item name="android:textSize">128sp</item>
+    </style>
+
+</resources>

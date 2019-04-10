@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_view_triage_title"
+            style="@style/feature.featureTitleText"
+            android:text="@string/text_view_triage_title"
+            app:layout_constraintBottom_toTopOf="@id/text_view_triage_explanation"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/text_view_triage_explanation"
+            style="@style/feature.featureExplanationText"
+            android:text="@string/text_view_triage_explanation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/text_view_triage_title"
+            app:layout_constraintRight_toRightOf="@id/text_view_triage_title"
+            app:layout_constraintTop_toBottomOf="@id/text_view_triage_title" />
+
+        <Button
+            android:id="@+id/button_triage_begin"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/material_design_margin"
+            android:text="@string/button_text_begin"
+            android:transitionName="robot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

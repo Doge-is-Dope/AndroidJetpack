@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#008577</color>
+
+    <color name="colorTriage1">#F44336</color>
+    <color name="colorTriage2">#FF9800</color>
+    <color name="colorTriage3">#FFC107</color>
+    <color name="colorTriage4">#8BC34A</color>
+    <color name="colorTriage5">#03A9F4</color>
+</resources>
