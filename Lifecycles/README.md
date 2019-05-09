@@ -9,20 +9,29 @@ It's crucial to program your app **proactively** and **defensively**.
 
 
 ### Activity Lifecycle States
-- Created
-- Started
-- Resumed
-- Destroyed
-- Initialized
+- Resumed: Visible & has Focus
+- Started: Visible
+- Created: Not Visible
+- Initialized | Destroyed 
+
 
 ### Activity Lifecycle Callbacks
-- onCreate
-- onStart: The activity is visible
+- onCreate: The activity is created but not visible yet. Only called once.
+- onRestart: This is being called when the activity has already been created
+- onStart: The activity is visible but doesn't have focus yet
 - onResume: The activity is visible and gains focus
-- onDestroy: The activity is shutdown and can be garbage collected
 - onPause: The activity is visible and loses focus
-- onStop
-- onRestart
+- onStop: The activity doesn't have focus (data is permanently saved)
+- onDestroy: The activity is shutdown and can be garbage collected
+
+### Mirroring
+The Activity Lifecycle Callbacks mirror one to another.
+
+- onCreate - onDestroy
+- onStart - onStop
+- onResume - onPause
+
+
 
 
 #### Case 1: Start an Activity
