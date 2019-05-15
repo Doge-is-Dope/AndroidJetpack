@@ -5,6 +5,9 @@ Manage your activity and fragment lifecycles
 It's crucial to program your app **proactively** and **defensively**.
 - Proactive: Clean up unused resources to make activity which is on-screen run smoothly.
 - Defensive: Be aware of actions from the OS like restarting your app.
+
+In this section, I will demonstrate the usage of Lifecycle Library and onSaveInstanceState.
+ 
   
 
 
@@ -98,3 +101,45 @@ override fun onCreate() {
 ```kotlin
 Timber.i("logging message")
 ```
+
+### LifeCycle Library
+Instead of handling individual component's lifecycle, LifeCycle Library provides callback method by using LifecycleOwner and LifecycleObserver.
+
+- LifecycleOwner Interface: a class that has a lifecycle. e.g. Activity and Fragment
+- LifecycleObserver Interface: Observer of a lifecycleOwner. e.g. Activity and Fragment
+
+#### Usage
+
+1. Extend the Observer
+```kotlin
+class DessertTimer : LifecycleObserver
+```
+
+2. Get the object from the LifeCycleOwner by the constructor and setup the observation
+```kotlin
+class DessertTimer(lifecycle : Lifecycle) : LifecycleObserver {
+
+    init {
+        lifecycle.addObserver(this)
+    }
+}
+```
+
+3. Create an object of the observer by passing the owner's lifecycle
+```kotlin
+dessertTimer = DessertTimer(this.lifecycle)
+```
+
+4. Use lifecycle annotation in observer. For example, 
+```kotlin
+@OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+fun dummyMethod() {
+    Timber.i("I was called")
+}
+```
+
+### onSaveInstanceState & and onRestoreInstanceState
+
+In Android Pie (API 28) and beyond, ```onSaveInstanceState``` occurs after **onStop**; It stores information as a bundle
+
+* ```onRestoreInstanceState``` is called after **onStart** while the savedBundle can also be used in **onCreate**

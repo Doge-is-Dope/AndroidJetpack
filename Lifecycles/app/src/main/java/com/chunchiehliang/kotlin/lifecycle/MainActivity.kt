@@ -2,7 +2,6 @@ package com.chunchiehliang.kotlin.lifecycle
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -10,14 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import com.chunchiehliang.kotlin.lifecycle.databinding.ActivityMainBinding
+import com.chunchiehliang.kotlin.lifecycle.model.Dessert
 import timber.log.Timber
 
+const val KEY_REVENUE = "key_revenue"
+
 class MainActivity : AppCompatActivity() {
+
     private var revenue = 0
     private var dessertsSold = 0
     private lateinit var binding: ActivityMainBinding
-
-    data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int)
+    private lateinit var dessertTimer: DessertTimer
 
     private val allDesserts = listOf(
         Dessert(R.drawable.cupcake, 5, 0),
@@ -36,15 +38,25 @@ class MainActivity : AppCompatActivity() {
     )
     private var currentDessert = allDesserts[0]
 
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState.putInt(KEY_REVENUE, revenue)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Timber.i("onCreate called")
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         binding.dessertButton.setOnClickListener {
             onDessertClicked()
+        }
+
+        dessertTimer = DessertTimer(this.lifecycle)
+        if (savedInstanceState != null) {
+            
         }
 
         // Set the TextViews to the right values
@@ -53,7 +65,6 @@ class MainActivity : AppCompatActivity() {
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
-
     }
 
     /**
