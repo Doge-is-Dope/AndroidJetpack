@@ -6,11 +6,13 @@ It's crucial to program your app **proactively** and **defensively**.
 - Proactive: Clean up unused resources to make activity which is on-screen run smoothly.
 - Defensive: Be aware of actions from the OS like restarting your app.
 
-In this section, I will demonstrate the usage of Lifecycle Library and onSaveInstanceState.
+There're mainly 2 lifecycle-aware situations: 1. Configuration change 2. Process shutdown state loss
+1. Configuration change: Rotation, device language change, physical keyboard
+2. Process shutdown: The application process in the background is killed by the OS
+
+The following will demonstrate the usage of **Lifecycle Library** and **onSaveInstanceState**.
  
   
-
-
 ### Activity Lifecycle States
 - Resumed: Visible & has Focus
 - Started: Visible
@@ -58,6 +60,10 @@ The Activity Lifecycle Callbacks mirror one to another.
 
 #### Case 4.2: Close the dialog by clicking outside of it
 ```onResume```
+
+#### Case 5: Configuration change: Rotation, device language change, physical keyboard
+```onPause``` -> ```onStop``` -> ```onDestroy``` -> ```onCreate``` -> ```onStart``` -> ```onResume``` 
+
 
 
 
@@ -138,8 +144,38 @@ fun dummyMethod() {
 }
 ```
 
-### onSaveInstanceState & and onRestoreInstanceState
+### onSaveInstanceState & onRestoreInstanceState
 
-In Android Pie (API 28) and beyond, ```onSaveInstanceState``` occurs after **onStop**; It stores information as a bundle
+- In Android Pie (API 28) and beyond, ```onSaveInstanceState``` occurs after **onStop**
+- It stores information as a bundle
+- The super method in ```onSaveInstanceState``` saves some important data, such as EditTexts
+- ```onRestoreInstanceState``` is called after **onStart** while the savedBundle can also be used in **onCreate**
 
-* ```onRestoreInstanceState``` is called after **onStart** while the savedBundle can also be used in **onCreate**
+For example:
+
+```onPause``` -> ```onStop``` -> ```onSaveInstanceState``` -> ```onDestroy``` -> 
+```onCreate``` -> ```onStart``` -> ```onRestoreInstanceState``` -> ```onResume``` 
+
+
+#### Usage
+1. Override onSaveInstanceState and save the data
+```kotlin
+override fun onSaveInstanceState(outState: Bundle) {
+super.onSaveInstanceState(outState)
+    outState.putInt(KEY_REVENUE, revenue)
+    outState.putInt(KEY_DESSERT_SOLD, dessertsSold)
+    outState.putInt(KEY_TIMER_SECONDS, dessertTimer.secondsCount)
+}
+```
+
+2. Retrieve the data in ```onCreate``` or ```onRestoreInstanceState```
+
+```kotlin
+if (savedInstanceState != null) {
+    revenue = savedInstanceState.getInt(KEY_REVENUE, 0)
+    dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD, 0)
+    dessertTimer.secondsCount = savedInstanceState.getInt(KEY_TIMER_SECONDS, 0)
+    showCurrentDessert()
+}
+```
+

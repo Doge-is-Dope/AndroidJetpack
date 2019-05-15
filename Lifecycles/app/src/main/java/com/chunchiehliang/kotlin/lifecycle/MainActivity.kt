@@ -12,14 +12,18 @@ import com.chunchiehliang.kotlin.lifecycle.databinding.ActivityMainBinding
 import com.chunchiehliang.kotlin.lifecycle.model.Dessert
 import timber.log.Timber
 
-const val KEY_REVENUE = "key_revenue"
+
+const val KEY_REVENUE = "revenue_key"
+const val KEY_DESSERT_SOLD = "dessert_sold_key"
+const val KEY_TIMER_SECONDS = "timer_seconds_key"
 
 class MainActivity : AppCompatActivity() {
 
     private var revenue = 0
     private var dessertsSold = 0
-    private lateinit var binding: ActivityMainBinding
     private lateinit var dessertTimer: DessertTimer
+
+    private lateinit var binding: ActivityMainBinding
 
     private val allDesserts = listOf(
         Dessert(R.drawable.cupcake, 5, 0),
@@ -39,9 +43,11 @@ class MainActivity : AppCompatActivity() {
     private var currentDessert = allDesserts[0]
 
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        savedInstanceState.putInt(KEY_REVENUE, revenue)
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_REVENUE, revenue)
+        outState.putInt(KEY_DESSERT_SOLD, dessertsSold)
+        outState.putInt(KEY_TIMER_SECONDS, dessertTimer.secondsCount)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,8 +61,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         dessertTimer = DessertTimer(this.lifecycle)
+
         if (savedInstanceState != null) {
-            
+            revenue = savedInstanceState.getInt(KEY_REVENUE, 0)
+            dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD, 0)
+            dessertTimer.secondsCount = savedInstanceState.getInt(KEY_TIMER_SECONDS, 0)
+            showCurrentDessert()
         }
 
         // Set the TextViews to the right values
