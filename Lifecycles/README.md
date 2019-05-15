@@ -10,7 +10,7 @@ There're mainly 2 lifecycle-aware situations: 1. Configuration change 2. Process
 1. Configuration change: Rotation, device language change, physical keyboard
 2. Process shutdown: The application process in the background is killed by the OS
 
-The following will demonstrate the usage of **Lifecycle Library** and **onSaveInstanceState**.
+The following will demonstrate the usage of [**Lifecycle Library**](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Lifecycles#lifecycle-library) and [**onSaveInstanceState**](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Lifecycles#onsaveinstancestate--onrestoreinstancestate).
  
   
 ### Activity Lifecycle States
