@@ -2,19 +2,19 @@ package com.chunchiehliang.kotlin.architecture
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import com.chunchiehliang.kotlin.architecture.databinding.FragmentGameBinding
 
-/**
- * A simple [Fragment] subclass.
- *
- */
 class GameFragment : Fragment() {
+    lateinit var viewModel: GameViewModel
 
     // The current word
     private var word = ""
@@ -27,8 +27,10 @@ class GameFragment : Fragment() {
 
     private lateinit var binding: FragmentGameBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(
@@ -37,6 +39,9 @@ class GameFragment : Fragment() {
             container,
             false
         )
+
+        Log.i("GameFragment", "Called ViewModelProviders.of")
+        viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
         resetList()
         nextWord()
