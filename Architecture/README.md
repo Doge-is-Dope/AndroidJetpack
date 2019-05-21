@@ -1,4 +1,4 @@
-# Android Architecture
+# Android Architecture: ViewModel & LiveData
 
 - UI Controller (Activity/Fragment): Display data and get OS/user events
 - ViewModel: Abstract class that holds the app's UI data and survives configuration changes
@@ -9,7 +9,7 @@
 
 ViewModel doesn't have size restrictions.
 
-### Usage
+### ViewModel Usage
 
 1. Add the lifecycle dependency. Check the latest version [here](https://developer.android.com/jetpack/androidx/releases/lifecycle#declaring_dependencies).
 ```
@@ -32,7 +32,9 @@ lateinit var viewModel: GameViewModel
 viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 ```
 
+### LiveData
 
+LiveData is an observable data holder class that is lifecycle-aware
 
 
 ### Reference
