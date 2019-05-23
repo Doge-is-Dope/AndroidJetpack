@@ -36,6 +36,23 @@ viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
 LiveData is an observable data holder class that is lifecycle-aware
 
+### Usage
+
+1. Add the lifecycle dependency. Check the latest version [here](https://developer.android.com/jetpack/androidx/releases/lifecycle#declaring_dependencies).
+```
+def lifecycle_version = "2.0.0"
+implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+```
+
+2. Wrap the variable with LiveData
+```kotlin
+val score = MutableLiveData<Int>()
+```
+
+3. Setup the observation relationship. ```observe(UIController, Observer { ... })```
+```kotlin
+viewModel.score.observe(this, Observer { newScore -> updateScoreText(newScore) }) 
+```
 
 ### Reference
 [Code Sample - Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)
