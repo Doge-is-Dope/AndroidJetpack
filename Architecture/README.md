@@ -49,6 +49,8 @@ implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 val score = MutableLiveData<Int>()
 ```
 
+3. Change references and add the required 
+
 3. Setup the observation relationship. ```observe(UIController, Observer { ... })```
 ```kotlin
 viewModel.score.observe(this, Observer { newScore -> updateScoreText(newScore) }) 
