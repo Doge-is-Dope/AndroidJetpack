@@ -7,7 +7,14 @@
 
 ### Why ViewModel not onSaveInstanceState
 
-ViewModel doesn't have size restrictions.
+ViewModel doesn't have size restrictions which means you can store larger data within ViewModel.
+
+### Outline
+- [View Model Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-usage)
+- [Live Data Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#usage)
+- [View Model Encapsulation](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-encapsulation)
+- []
+- [Reference](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#reference)
 
 ### ViewModel Usage
 
@@ -34,7 +41,10 @@ viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
 ### LiveData
 
-LiveData is an observable data holder class that is lifecycle-aware
+- Live Data is an observable data holder class that is lifecycle-aware. 
+- Live Data allows us to easily communicate from the View Model to the UIController
+- Live Data keeps track of data ```state```. An example of ```state```: The button is red or the current score is 20.
+- An event happens once and it's done until it's triggered again. An example of ```event```: Navigating to another screen, a buuton is pressed, a notification.
 
 ### Usage
 

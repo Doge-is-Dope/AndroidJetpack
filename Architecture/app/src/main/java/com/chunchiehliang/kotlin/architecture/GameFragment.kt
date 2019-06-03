@@ -2,10 +2,10 @@ package com.chunchiehliang.kotlin.architecture
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -34,11 +34,17 @@ class GameFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
-        viewModel.word.observe(this, Observer {
-            newWord -> binding.wordText.text = newWord
+        viewModel.word.observe(this, Observer { newWord ->
+            binding.wordText.text = newWord
         })
 
         viewModel.score.observe(this, Observer { newScore -> binding.scoreText.text = newScore.toString() })
+
+        viewModel.eventGameFinished.observe(this, Observer { hasFinished ->
+            if (hasFinished) {
+                gameFinished()
+            }
+        })
 
 
         binding.correctButton.setOnClickListener {
@@ -58,8 +64,9 @@ class GameFragment : Fragment() {
      * Called when the game is finished
      */
     private fun gameFinished() {
-        val currentScore = viewModel.score.value ?: 0
-        val action = GameFragmentDirections.actionGameToScore(currentScore)
-        NavHostFragment.findNavController(this).navigate(action)
+//        val currentScore = viewModel.score.value ?: 0
+//        val action = GameFragmentDirections.actionGameToScore(currentScore)
+//        NavHostFragment.findNavController(this).navigate(action)
+        Toast.makeText(context, "Game has finished", Toast.LENGTH_SHORT).show()
     }
 }
