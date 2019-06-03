@@ -1,10 +1,12 @@
 package com.chunchiehliang.kotlin.demo
 
+import android.content.res.Configuration
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -34,6 +36,16 @@ class ListFragment : Fragment() {
             Snackbar.make(binding.root, "Next", Snackbar.LENGTH_SHORT).show()
         }
         return binding.root
+    }
+
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        if (newConfig?.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Toast.makeText(context, "Portrait", Toast.LENGTH_SHORT).show()
+        }else if (newConfig?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(context, "Landscape", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private inner class MarginItemDecoration(val margin: Int) : RecyclerView.ItemDecoration() {

@@ -56,7 +56,40 @@ val score = MutableLiveData<Int>()
 viewModel.score.observe(this, Observer { newScore -> updateScoreText(newScore) }) 
 ```
 
+### ViewModel Encapsulation
+It's important not to expose the fields in the ViewModel but it's necessary to be accessible in the UIController.
+The following is a no-no in a good architecture
+
+```kotlin
+class GameFragment: Fragment() {
+    viewModel.score.value = 1000
+}
+```
+
+### How to encapsulate variables as LiveData in ViewModel
+1.  Make internal and external versions of the variables
+
+
+The internal version has an underline in front of the name
+```kotlin
+// internal
+private val _score = MutableLiveData<Int>()
+// external
+val score: LiveData<Int>
+```
+
+2. Make a backing property for the external version that returns the internal MutableLiveData as a LiveData
+```kotlin
+val score: LiveData<Int>
+    get() = _score
+```
+3. In the view model, use the internal, mutable version of the variables
+
+
+
 ### Reference
 [Code Sample - Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)
+[Backing properties Kotlin](https://kotlinlang.org/docs/reference/properties.html#backing-properties)
+[Backing properties Android](https://developer.android.com/kotlin/style-guide#backing-properties)
 
 

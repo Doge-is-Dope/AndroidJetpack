@@ -23,6 +23,8 @@ class WordAdapter(val wordList: MutableList<WordViewModel.Word>) :
         holder.bind(wordList[position])
     }
 
+
+
     class ListItemViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(word: Any) {
             binding.setVariable(BR.wordViewModel, word)
