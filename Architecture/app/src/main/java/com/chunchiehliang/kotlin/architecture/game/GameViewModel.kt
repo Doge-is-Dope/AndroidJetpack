@@ -1,7 +1,6 @@
-package com.chunchiehliang.kotlin.architecture
+package com.chunchiehliang.kotlin.architecture.game
 
 import android.os.CountDownTimer
-import android.text.format.DateUtils
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -51,7 +50,10 @@ class GameViewModel : ViewModel() {
         _score.value = 0
         _eventGameFinish.value = false
 
-        timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+        timer = object : CountDownTimer(
+            COUNTDOWN_TIME,
+            ONE_SECOND
+        ) {
 
             override fun onTick(millisUntilFinished: Long) {
                 // what should happen each tick of the timer

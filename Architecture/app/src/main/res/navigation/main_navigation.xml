@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/title_destination"
-        android:name="com.chunchiehliang.kotlin.architecture.TitleFragment"
+        android:name="com.chunchiehliang.kotlin.architecture.title.TitleFragment"
         android:label="fragment_title"
         tools:layout="@layout/fragment_title">
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/game_destination"
-        android:name="com.chunchiehliang.kotlin.architecture.GameFragment"
+        android:name="com.chunchiehliang.kotlin.architecture.game.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game">
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/score_destination"
-        android:name="com.chunchiehliang.kotlin.architecture.ScoreFragment"
+        android:name="com.chunchiehliang.kotlin.architecture.Score.ScoreFragment"
         android:label="fragment_score"
         tools:layout="@layout/fragment_score">
         <action

@@ -146,7 +146,58 @@ viewModel.currentTime.observe(this, Observer { newTime ->
 
 
   
- 
+### ViewModel Factory: Pass information to view model
+
+A class that knows how to create ViewModels.
+
+1. Create a ViewModel that takes in parameters
+```kotlin
+class ScoreViewModel(finalScore: Int): ViewModel(){
+}
+```
+
+2. Make a ViewModel Factory for ViewModel and return an instance of the ViewModel in the overridden ```create``` method
+```kotlin
+class ScoreViewModelFactory(private val finalScore: Int) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(ScoreViewModel::class.java)) {
+            return ScoreViewModel(finalScore) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
+```
+
+3. Create and construct a ViewModelFactory in UI Controller
+```kotlin
+private lateinit var viewModel: ScoreViewModel
+private lateinit var viewModelFactory: ScoreViewModelFactory
+
+// ...
+
+// Get args using by navArgs property delegate
+val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
+
+// Convert this class to properly observe and use ScoreViewModel
+viewModelFactory = ScoreViewModelFactory(scoreFragmentArgs.score)
+viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
+```
+
+
+### Add ViewModel to Data Binding
+
+1. Add a data variable in ```<layout>``` (.xml)
+```xml
+<layout>
+    <data>
+        <variable
+            name="gameViewModel"
+            type="com.example.android.game.GameViewModel" />
+    </data>
+</layout>
+```
+
+
 
 ### Reference
 - [Code Sample - Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)

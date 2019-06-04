@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.architecture
+package com.chunchiehliang.kotlin.architecture.game
 
 
 import android.os.Bundle
@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
+import com.chunchiehliang.kotlin.architecture.GameFragmentDirections
+import com.chunchiehliang.kotlin.architecture.R
 import com.chunchiehliang.kotlin.architecture.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
@@ -38,7 +40,9 @@ class GameFragment : Fragment() {
             binding.wordText.text = newWord
         })
 
-        viewModel.score.observe(this, Observer { newScore -> binding.scoreText.text = newScore.toString() })
+        viewModel.score.observe(this, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
 
         viewModel.eventGameFinish.observe(this, Observer { hasFinished ->
             if (hasFinished) {
@@ -70,7 +74,8 @@ class GameFragment : Fragment() {
      */
     private fun gameFinished() {
         val currentScore = viewModel.score.value ?: 0
-        val action = GameFragmentDirections.actionGameToScore(currentScore)
+        val action =
+            GameFragmentDirections.actionGameToScore(currentScore)
         NavHostFragment.findNavController(this).navigate(action)
 //        Toast.(context, "Game has finished", Toast.LENGTH_SHORT).show()
     }
