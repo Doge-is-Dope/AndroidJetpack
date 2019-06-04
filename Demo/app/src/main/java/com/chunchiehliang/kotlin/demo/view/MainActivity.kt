@@ -1,7 +1,8 @@
-package com.chunchiehliang.kotlin.demo
+package com.chunchiehliang.kotlin.demo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.chunchiehliang.kotlin.demo.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -2,10 +2,10 @@ package com.chunchiehliang.kotlin.architecture
 
 
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -40,10 +40,15 @@ class GameFragment : Fragment() {
 
         viewModel.score.observe(this, Observer { newScore -> binding.scoreText.text = newScore.toString() })
 
-        viewModel.eventGameFinished.observe(this, Observer { hasFinished ->
+        viewModel.eventGameFinish.observe(this, Observer { hasFinished ->
             if (hasFinished) {
                 gameFinished()
+                viewModel.onGameFinishedComplete()
             }
+        })
+
+        viewModel.currentTime.observe(this, Observer { newTime ->
+            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
         })
 
 
@@ -64,9 +69,9 @@ class GameFragment : Fragment() {
      * Called when the game is finished
      */
     private fun gameFinished() {
-//        val currentScore = viewModel.score.value ?: 0
-//        val action = GameFragmentDirections.actionGameToScore(currentScore)
-//        NavHostFragment.findNavController(this).navigate(action)
-        Toast.makeText(context, "Game has finished", Toast.LENGTH_SHORT).show()
+        val currentScore = viewModel.score.value ?: 0
+        val action = GameFragmentDirections.actionGameToScore(currentScore)
+        NavHostFragment.findNavController(this).navigate(action)
+//        Toast.(context, "Game has finished", Toast.LENGTH_SHORT).show()
     }
 }

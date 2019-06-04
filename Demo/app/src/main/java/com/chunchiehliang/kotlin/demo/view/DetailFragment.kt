@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo
+package com.chunchiehliang.kotlin.demo.view
 
 
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.chunchiehliang.kotlin.demo.R
 import com.chunchiehliang.kotlin.demo.databinding.FragmentDetailBinding
 
 
@@ -17,7 +18,8 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentDetailBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        val binding: FragmentDetailBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_detail, container, false)
         return binding.root
     }
 

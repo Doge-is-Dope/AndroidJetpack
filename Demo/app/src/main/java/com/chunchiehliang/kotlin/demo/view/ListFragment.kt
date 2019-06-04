@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo
+package com.chunchiehliang.kotlin.demo.view
 
 import android.content.res.Configuration
 import android.graphics.Rect
@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chunchiehliang.kotlin.demo.R
+import com.chunchiehliang.kotlin.demo.WordAdapter
+import com.chunchiehliang.kotlin.demo.WordViewModel
 import com.chunchiehliang.kotlin.demo.databinding.FragmentListBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -20,7 +23,8 @@ class ListFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding: FragmentListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false)
+        val binding: FragmentListBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_list, container, false)
 
         val viewModel: WordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)
 

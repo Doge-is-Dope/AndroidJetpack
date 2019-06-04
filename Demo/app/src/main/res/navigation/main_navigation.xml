@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/list_destination"
-        android:name="com.chunchiehliang.kotlin.demo.ListFragment"
+        android:name="com.chunchiehliang.kotlin.demo.view.ListFragment"
         android:label="List Fragment"
         tools:layout="@layout/fragment_list">
 
@@ -19,6 +19,6 @@
 
     <fragment
         android:id="@+id/detail_destination"
-        android:name="com.chunchiehliang.kotlin.demo.DetailFragment"
+        android:name="com.chunchiehliang.kotlin.demo.view.DetailFragment"
         android:label="Detail Fragment" />
 </navigation>

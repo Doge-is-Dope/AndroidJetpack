@@ -13,7 +13,7 @@ ViewModel doesn't have size restrictions which means you can store larger data w
 - [View Model Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-usage)
 - [Live Data Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#usage)
 - [View Model Encapsulation](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-encapsulation)
-- []
+- [Event in View Model: CountDownTimer]()
 - [Reference](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#reference)
 
 ### ViewModel Usage
@@ -95,11 +95,62 @@ val score: LiveData<Int>
 ```
 3. In the view model, use the internal, mutable version of the variables
 
+### Event in View Model: CountDownTimer
 
+A [CountDownTimer](https://developer.android.com/reference/android/os/CountDownTimer) is a timer that can be scheduled by specifying ```millisInFuture``` and ```countDownInterval```. For example, ```CountDownTimer(30000L, 1000L)``` schedules a 30 seconds countdown. The following shows an example of using ```CountDownTimer``` in a View Model.
+
+1. Create a timer field.
+```kotlin
+private val timer: CountDownTimer
+```
+
+2. Create a properly encapsulated LiveData for the current time
+```kotlin
+private val _currentTime = MutableLiveData<Long>()
+val currentTime: LiveData<Long>
+    get() = _currentTime
+```
+
+3. Initialize the timer object and start the timer
+```kotlin
+timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+    override fun onTick(millisUntilFinished: Long) {
+        // what should happen each tick of the timer
+        _currentTime.value = millisUntilFinished / ONE_SECOND
+        }
+
+    override fun onFinish() {
+        // what should happen when the timer finishes
+        _currentTime.value = DONE
+        _eventGameFinish.value = true
+    }
+}
+
+timer.start()
+```
+
+4. Cancel the timer in view model to avoid memory leaks
+```kotlin
+override fun onCleared() {
+    super.onCleared()
+    timer.cancel()
+}
+```
+
+5. Update the UI in UI Controller (and format the string if it's needed)
+```kotlin
+viewModel.currentTime.observe(this, Observer { newTime ->
+    binding.timerText.text = DateUtils.formatElapsedTime(newTime)
+})
+```
+
+
+  
+ 
 
 ### Reference
-[Code Sample - Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)
-[Backing properties Kotlin](https://kotlinlang.org/docs/reference/properties.html#backing-properties)
-[Backing properties Android](https://developer.android.com/kotlin/style-guide#backing-properties)
+- [Code Sample - Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)
+- [Backing properties Kotlin](https://kotlinlang.org/docs/reference/properties.html#backing-properties)
+- [Backing properties Android](https://developer.android.com/kotlin/style-guide#backing-properties)
 
 
