@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/score_destination"
-        android:name="com.chunchiehliang.kotlin.architecture.Score.ScoreFragment"
+        android:name="com.chunchiehliang.kotlin.architecture.score.ScoreFragment"
         android:label="fragment_score"
         tools:layout="@layout/fragment_score">
         <action

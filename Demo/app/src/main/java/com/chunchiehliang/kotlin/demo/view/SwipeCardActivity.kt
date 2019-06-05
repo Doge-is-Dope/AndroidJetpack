@@ -12,8 +12,5 @@ class SwipeCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swipe_card)
 
-        val cardStackView = findViewById<CardStackView>(R.id.card_stack_view)
-        cardStackView.layoutManager = CardStackLayoutManager()
-        cardStackView.adapter = CardStackAdapter()
     }
 }

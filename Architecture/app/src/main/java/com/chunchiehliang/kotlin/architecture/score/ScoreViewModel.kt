@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.architecture.Score
+package com.chunchiehliang.kotlin.architecture.score
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,7 +19,7 @@ class ScoreViewModel(finalScore: Int) : ViewModel() {
         _eventPlayAgain.value = false
     }
 
-    fun onPlatAgain() {
+    fun onPlayAgain() {
         _eventPlayAgain.value = true
     }
 

@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.architecture.Score
+package com.chunchiehliang.kotlin.architecture.score
 
 
 import android.os.Bundle
@@ -12,8 +12,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.chunchiehliang.kotlin.architecture.R
-import com.chunchiehliang.kotlin.architecture.ScoreFragmentArgs
-import com.chunchiehliang.kotlin.architecture.ScoreFragmentDirections
 import com.chunchiehliang.kotlin.architecture.databinding.FragmentScoreBinding
 
 class ScoreFragment : Fragment() {
@@ -23,8 +21,10 @@ class ScoreFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         // Inflate view and obtain an instance of the binding class.
-        val binding: FragmentScoreBinding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_score, container, false)
+        val binding: FragmentScoreBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_score, container, false
+        )
 
         // Get args using by navArgs property delegate
         val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
@@ -33,11 +33,11 @@ class ScoreFragment : Fragment() {
         viewModelFactory = ScoreViewModelFactory(scoreFragmentArgs.score)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
 
+        binding.scoreViewModel = viewModel
+
         viewModel.score.observe(this, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
-
-        binding.playAgainButton.setOnClickListener { viewModel.onPlatAgain() }
 
         viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
             if (playAgain) {

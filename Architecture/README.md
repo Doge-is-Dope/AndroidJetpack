@@ -14,6 +14,9 @@ ViewModel doesn't have size restrictions which means you can store larger data w
 - [Live Data Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#usage)
 - [View Model Encapsulation](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-encapsulation)
 - [Event in View Model: CountDownTimer]()
+- [ViewModel Factory]()
+- [Add ViewModel to Data Binding]()
+- [Add LiveData to Data Binding]()
 - [Reference](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#reference)
 
 ### ViewModel Usage
@@ -186,6 +189,8 @@ viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::cl
 
 ### Add ViewModel to Data Binding
 
+Use ViewModel's functions in a layout file by using data binding 
+
 1. Add a data variable in ```<layout>``` (.xml)
 ```xml
 <layout>
@@ -197,11 +202,51 @@ viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::cl
 </layout>
 ```
 
+2. Use the ViewModel variable to handle clicking in layout file. For example, you can define an ```onclick``` for buttons. 
+```xml
+<Button
+    android:id="@+id/skip_button"
+    android:onClick="@{() -> gameViewModel.onSkip()}"
+/>
+```
+
+3. Pass the ViewModel into the data binding
+```kotlin
+// in Fragment.onCreate
+binding.gameViewModel = viewModel
+```
+
+### Add LiveData to Data Binding
+Use LiveData to automatically update layout via data binding.
+1. Use the LiveData from ViewModel to set the text attribute in layout
+
+There's no need to use ```value``` for the field. Be careful that the return value has to be String. In this case, string-formatting may apply to the value  
+```xml
+<TextView
+android:text="@{gameViewModel.word}" />
+```
+
+or use string-format in string resource. For instance,
+
+```xml
+<TextView
+android:text="@{@string/quote_format(gameViewModel.word)}" />
+```
+
+2. Set ```lifecycleOwner``` to the UI Controller to make the data binding lifecycle aware
+```kotlin
+binding.lifecycleOwner = this
+```
+
+
+
+
 
 
 ### Reference
 - [Code Sample - Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)
 - [Backing properties Kotlin](https://kotlinlang.org/docs/reference/properties.html#backing-properties)
 - [Backing properties Android](https://developer.android.com/kotlin/style-guide#backing-properties)
+- [Use LiveData to notify the UI about data changes](https://developer.android.com/topic/libraries/data-binding/architecture#livedata)
 
 

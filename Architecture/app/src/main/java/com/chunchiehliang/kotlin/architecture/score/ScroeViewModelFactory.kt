@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.architecture.Score
+package com.chunchiehliang.kotlin.architecture.score
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
