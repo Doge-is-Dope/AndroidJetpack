@@ -8,18 +8,18 @@
 
 
 ### Android Architecture
-- [Benefits of using Android Architecture]()
+- [Benefits of using Android Architecture](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#benefits-of-using-android-architecture)
 - [View Model Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-usage)
 - [Live Data Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#usage)
 - [View Model Encapsulation](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-encapsulation)
-- [Event in View Model: CountDownTimer]()
-- [ViewModel Factory]()
+- [Event in View Model: CountDownTimer](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#event-in-view-model-countdowntimer)
+- [ViewModel Factory](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-factory-pass-information-to-view-model)
 
 Reduce code by data binding
 
-- [Add ViewModel to Data Binding]()
-- [Add LiveData to Data Binding]()
-- [LiveData Map Transformation]()
+- [Add ViewModel to Data Binding](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#add-viewmodel-to-data-binding)
+- [Add LiveData to Data Binding](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#add-livedata-to-data-binding)
+- [LiveData Map Transformation](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#livedata-map-transformation)
 - [Reference](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#reference)
 
 
