@@ -2,22 +2,38 @@
 
 - UI Controller (Activity/Fragment): Display data and get OS/user events
 - ViewModel: Abstract class that holds the app's UI data and survives configuration changes
+- LiveData: A class that wraps around the data and allows to be observed by UI Controllers 
 - UI Controller doesn't decide what to display on screen or process what happens during an input event
 - ViewModel never references fragments, activities or views
 
-### Why ViewModel not onSaveInstanceState
 
-ViewModel doesn't have size restrictions which means you can store larger data within ViewModel.
-
-### Outline
+### Android Architecture
+- [Benefits of using Android Architecture]()
 - [View Model Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-usage)
 - [Live Data Usage](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#usage)
 - [View Model Encapsulation](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#viewmodel-encapsulation)
 - [Event in View Model: CountDownTimer]()
 - [ViewModel Factory]()
+
+Reduce code by data binding
+
 - [Add ViewModel to Data Binding]()
 - [Add LiveData to Data Binding]()
+- [LiveData Map Transformation]()
 - [Reference](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture#reference)
+
+
+### Benefits of using Android Architecture
+
+1. Organized
+2. Easier to debug
+3. Fewer lifecycle issues
+4. Modular
+5. Testable
+
+### Why ViewModel not onSaveInstanceState
+
+ViewModel doesn't have size restrictions which means you can store larger data within ViewModel.
 
 ### ViewModel Usage
 
@@ -216,6 +232,8 @@ Use ViewModel's functions in a layout file by using data binding
 binding.gameViewModel = viewModel
 ```
 
+4. Remove the observer in the UI Controller
+
 ### Add LiveData to Data Binding
 Use LiveData to automatically update layout via data binding.
 1. Use the LiveData from ViewModel to set the text attribute in layout
@@ -238,8 +256,30 @@ android:text="@{@string/quote_format(gameViewModel.word)}" />
 binding.lifecycleOwner = this
 ```
 
+3. Remove the observer in the UI Controller
 
 
+### LiveData Map Transformation
+
+The best practice to convert an Integer (or other type) to to a String for LiveData. E.g. convert the current time into a formatted String.
+
+1. In ViewModel, create a new LiveData for String type using ```Transformations.map```.
+
+This will store the String version of the variable.
+```kotlin
+val currentTimeString = Transformations.map(currentTime) {time ->
+    DateUtils.formatElapsedTime(time)
+}
+```
+
+2. In layout file, set the text for the TextView
+```xml
+<TextView
+android:text="@{gameViewModel.currentTimeString}" />
+```
+
+3. Remove the observer in the UI Controller
+ 
 
 
 
