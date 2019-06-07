@@ -43,11 +43,11 @@ class ListFragment : Fragment() {
     }
 
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        if (newConfig?.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             Toast.makeText(context, "Portrait", Toast.LENGTH_SHORT).show()
-        }else if (newConfig?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        }else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Toast.makeText(context, "Landscape", Toast.LENGTH_SHORT).show()
         }
     }

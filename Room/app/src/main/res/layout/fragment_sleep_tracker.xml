@@ -48,7 +48,7 @@
              from the ViewModel. The click handler is in the ViewModel as well, and
              you can set it for the Views using this lambda pattern. -->
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/start_button"
             style="@style/SleepButtons"
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/stop_button"
             style="@style/SleepButtons"
             android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
             app:layout_constraintStart_toEndOf="@+id/start_button"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/clear_button"
             style="@style/SleepButtons"
             android:layout_width="wrap_content"
