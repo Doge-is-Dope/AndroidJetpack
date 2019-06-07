@@ -1,3 +1,5 @@
+package com.chunchiehliang.kotlin.room
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.chunchiehliang.kotlin.room.R
