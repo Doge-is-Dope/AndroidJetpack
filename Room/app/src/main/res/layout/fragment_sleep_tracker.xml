@@ -50,7 +50,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/start_button"
-            style="@style/SleepButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
@@ -62,7 +61,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stop_button"
-            style="@style/SleepButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
@@ -74,7 +72,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/clear_button"
-            style="@style/SleepButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
