@@ -1,7 +1,9 @@
+package com.chunchiehliang.kotlin.room.sleeptracker
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.chunchiehliang.kotlin.room.database.SleepDatabaseDao
 
 /**
  * This is pretty much boiler plate code for a ViewModel Factory.

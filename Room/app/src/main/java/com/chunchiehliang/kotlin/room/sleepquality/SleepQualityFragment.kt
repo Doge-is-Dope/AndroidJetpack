@@ -1,3 +1,5 @@
+package com.chunchiehliang.kotlin.room.sleepquality
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.chunchiehliang.kotlin.room.R
 import com.chunchiehliang.kotlin.room.databinding.FragmentSleepQualityBinding
+
+
 
 /**
  * Fragment that displays a list of clickable icons,
