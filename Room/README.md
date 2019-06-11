@@ -2,6 +2,10 @@
 
 - [Create an Entity]()
 - [Data Access Object (DAO)]()
+- [Create a Room database]()
+- [Add a ViewModel]()
+- [Multithreading & Coroutines]()
+
 
 ### Create an Entity
 
@@ -175,6 +179,82 @@ abstract class SleepDatabase : RoomDatabase() {
     }
 }
 ```
+
+### Add a ViewModel
+
+When using Room, a custom ViewModel usually extends ```AndroidViewModel()```. 
+
+The class extends ```AndroidViewModel()``` takes application context as parameter
+
+1. Create ViewModel & ViewModelFactory
+
+```kotlin
+class SleepTrackerViewModel(val database: SleepDatabaseDao, 
+application: Application) : AndroidViewModel(application) {
+}
+```
+
+The ViewModelFactory is boilerplate which can be used in the future.
+
+```kotlin
+class SleepTrackerViewModelFactory(private val dataSource: SleepDatabaseDao, private val application: Application) : ViewModelProvider.Factory {
+    @Suppress("unchecked_cast")
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(SleepTrackerViewModel::class.java)) {
+            return SleepTrackerViewModel(dataSource, application) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
+```
+2. In the UI Controller, get a reference to the application context
+
+```requireNotNull()``` throws an IllegalArgumentException if the value is null.
+
+```kotlin
+val application = requireNotNull(this.activity).application
+```
+
+3. Get a reference to the DAO of the database
+```kotlin
+val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+```
+
+4. Create an instance of the viewModelFactory
+
+```kotlin
+val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
+```
+
+5. Get a reference to the ViewModel
+
+```kotlin
+val sleepTrackerViewModel = ViewModelProviders
+                        .of(this, viewModelFactory)
+                        .get(SleepTrackerViewModel::class.java)
+```
+
+##### Data Binding for ViewModel
+
+6. Set the lifecycle owner for the binding
+
+```kotlin
+binding.setLifecycleOwner(this)
+```
+
+7. In the layout file, set the ```<variable>``` tag as a reference to the ViewModel for DataBinding
+
+```xml
+<data>
+    <variable
+        name="sleepTrackerViewModel"
+        type="com.chunchiehliang.kotlin.room.sleeptracker.SleepTrackerViewModel" />
+</data>
+```
+
+### Multithreading & Coroutines
+
+
 
 ### Reference
 
