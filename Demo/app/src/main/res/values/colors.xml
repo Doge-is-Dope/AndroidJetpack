@@ -17,4 +17,13 @@
     <color name="grey_600">#747474</color>
     <color name="spacer_grey">#e0e0e0</color>
     <color name="white_90">#e6ffffff</color>
+
+    <integer-array name="swipe_refresh">
+        <item>@color/colorPrimary</item>
+        <item>@color/indigo</item>
+        <item>@color/teal</item>
+        <item>@color/light_blue</item>
+        <item>@color/yellow</item>
+        <item>@color/orange</item>
+    </integer-array>
 </resources>
