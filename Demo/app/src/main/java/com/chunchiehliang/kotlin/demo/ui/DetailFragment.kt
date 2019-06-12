@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo.view
+package com.chunchiehliang.kotlin.demo.ui
 
 
 import android.os.Bundle

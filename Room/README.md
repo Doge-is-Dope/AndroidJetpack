@@ -254,11 +254,30 @@ binding.setLifecycleOwner(this)
 
 ### Multithreading & Coroutines
 
+Operations like *manipulating database* or *fetching data from the Internet* should run on a separate thread instead of the main thread (UI thread).
+
+One of the solution for long-running task without blocking the main thread is using **callbacks**. However, codes heavily using callbacks may be difficult to read because it will be run synchronously in the future. Also, callbacks don't allow to use some language features like exceptions. In this case, **Coroutines** is a better choice in **Kotlin**.
+
+####  Coroutines
+
+Coroutines handles long-running tasks in Kotlin. It brings advantages that callbacks doesn't have: 1. Exceptions 2. Code simplification
+- Asynchronous: The coroutine runs independently from the main execution.
+- Non-blocking: The system will not block the main/UI thread.
+
+That is, coroutine **suspends** the long-running task without blocking the main thread while other tasks are running in the system. Later, the system executes coroutine until the result is available.
+
+ 
+To use coroutines in Kotlin, we need the following pieces:
+1. Job: A background job that can be cancelled by it's parent.
+2. Dispatcher: The dispatcher sends off coroutines to run on various threads. 
+3. Scope: The scope combines information, including a job and dispatcher, to define the context in which the coroutine runs.
+ 
 
 
 ### Reference
 
--[Room migrations](https://medium.com/androiddevelopers/testing-room-migrations-be93cdb0d975)
+- [Room migrations](https://medium.com/androiddevelopers/testing-room-migrations-be93cdb0d975)
+- [Coroutines in Kotlin](https://kotlinlang.org/docs/reference/coroutines-overview.html)
 
 
 

@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo.view
+package com.chunchiehliang.kotlin.demo.ui
 
 import android.content.res.Configuration
 import android.graphics.Rect
@@ -34,11 +34,8 @@ class ListFragment : Fragment() {
 
         binding.recyclerWordList.layoutManager = LinearLayoutManager(context)
         binding.recyclerWordList.adapter = WordAdapter(viewModel.wordList)
-        binding.recyclerWordList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.dimen_16dp)).toInt()))
+        binding.recyclerWordList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.margin_normal)).toInt()))
 
-        binding.fabNew.setOnClickListener {
-            Snackbar.make(binding.root, "Next", Snackbar.LENGTH_SHORT).show()
-        }
         return binding.root
     }
 
