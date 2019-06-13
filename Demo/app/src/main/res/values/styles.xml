@@ -54,6 +54,13 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="TextAppearance.Demo.FadingSnackbarAction" parent="@style/TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
     <style name="TextAppearance.Demo.Body" parent="@style/TextAppearance.AppCompat.Body1">
         <item name="android:textColor">?android:textColorSecondary</item>
     </style>

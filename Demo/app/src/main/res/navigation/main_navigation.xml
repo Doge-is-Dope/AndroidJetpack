@@ -18,9 +18,9 @@
 
     <fragment
         android:id="@+id/fragment_page"
-        android:name="com.chunchiehliang.kotlin.demo.ui.PageFragment"
+        android:name="com.chunchiehliang.kotlin.demo.ui.PagerFragment"
         android:label="PageFragment"
-        tools:layout="@layout/fragment_page">
+        tools:layout="@layout/fragment_pager">
         <action
             android:id="@+id/action_pageFragment_to_detail_destination"
             app:destination="@id/fragment_detail" />

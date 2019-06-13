@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/margin_normal"
+            android:contentDescription="@string/filter"
             app:fabSize="auto"
             app:hoveredFocusedTranslationZ="0dp"
             app:pressedTranslationZ="0dp"
@@ -36,7 +37,7 @@
 
         <fragment
             android:id="@+id/filter_sheet"
-            android:name="com.chunchiehliang.kotlin.demo.ui.DetailFragment"
+            android:name="com.chunchiehliang.kotlin.demo.ui.filter.FilterFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
