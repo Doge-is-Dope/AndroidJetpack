@@ -258,7 +258,7 @@ Operations like *manipulating database* or *fetching data from the Internet* sho
 
 One of the solution for long-running task without blocking the main thread is using **callbacks**. However, codes heavily using callbacks may be difficult to read because it will be run synchronously in the future. Also, callbacks don't allow to use some language features like exceptions. In this case, **Coroutines** is a better choice in **Kotlin**.
 
-####  Coroutines
+#### Coroutines
 
 Coroutines handles long-running tasks in Kotlin. It brings advantages that callbacks doesn't have: 1. Exceptions 2. Code simplification
 - Asynchronous: The coroutine runs independently from the main execution.
@@ -272,6 +272,59 @@ To use coroutines in Kotlin, we need the following pieces:
 2. Dispatcher: The dispatcher sends off coroutines to run on various threads. 
 3. Scope: The scope combines information, including a job and dispatcher, to define the context in which the coroutine runs.
  
+
+
+#### Usage
+
+1. Create a coroutine job in ViewModel
+
+We need an instance of Job that cancels all coroutines started by the ViewModel when the ViewModel is not longer used and destroyed.
+
+```kotlin
+private var viewModelJob = Job()
+```
+
+and override ```onCleared()``` to all coroutines. 
+
+```kotlin
+override fun onCleared() {
+    super.onCleared()
+    viewModelJob.cancel()
+}
+```
+
+2. Define a scope for the coroutines to run in
+
+```kotlin
+private val uiScope = CoroutineScope(Dispatchers.Main +  viewModelJob)
+```
+
+3. Define the required variables to hold the data
+```kotlin
+private var tonight = MutableLiveData<SleepNight?>()
+```
+The variable that holds the data from the database
+
+```kotlin
+private val nights = database.getAllNights()
+```
+
+4. Use coroutine to get the data from the database
+```kotlin
+private fun initializeTonight() {
+    uiScope.launch {
+        tonight.value = getTonightFromDatabase()
+    }
+}
+```
+
+5. Define a private suspend function that returns the data
+
+```suspend``` is used because the function is called inside the coroutine
+
+```kotlin
+private suspend fun getTonightFromDatabase():  SleepNight? { }
+```
 
 
 ### Reference
