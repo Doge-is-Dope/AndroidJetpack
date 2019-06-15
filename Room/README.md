@@ -346,6 +346,7 @@ android:onClick="@{() -> viewModel.onStartTracking()}" />
 
 - [Room migrations](https://medium.com/androiddevelopers/testing-room-migrations-be93cdb0d975)
 - [Coroutines in Kotlin](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+- [Use Coroutines in Android app](https://codelabs.developers.google.com/codelabs/kotlin-coroutines/#0)
 
 
 
