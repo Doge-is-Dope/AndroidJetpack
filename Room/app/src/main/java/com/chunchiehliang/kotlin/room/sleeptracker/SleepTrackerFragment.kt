@@ -27,15 +27,16 @@ class SleepTrackerFragment : Fragment() {
 
         // Create an instance of the ViewModel Factory.
         val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+
         val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
 
         // Get a reference to the ViewModel associated with this fragment.
         val sleepTrackerViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(SleepTrackerViewModel::class.java)
 
-
-        binding.lifecycleOwner = this
         binding.sleepTrackerViewModel = sleepTrackerViewModel
+        binding.lifecycleOwner = this
+
 
         return binding.root
     }

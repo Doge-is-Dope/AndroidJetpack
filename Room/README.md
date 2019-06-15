@@ -311,9 +311,9 @@ private val nights = database.getAllNights()
 
 4. Use coroutine to get the data from the database
 ```kotlin
-private fun initializeTonight() {
+private fun someWork() {
     uiScope.launch {
-        tonight.value = getTonightFromDatabase()
+        suspendFunction()
     }
 }
 ```
@@ -324,6 +324,21 @@ private fun initializeTonight() {
 
 ```kotlin
 private suspend fun getTonightFromDatabase():  SleepNight? { }
+```
+
+6. Return the result from a coroutine
+```kotlin
+private suspend fun suspendFunction() {
+    return withContext(Dispatchers.IO) {
+       // longRunningWork here
+    }
+}
+```
+
+7. Add to layout using Databinding if it's necessary
+```xml
+<Button
+android:onClick="@{() -> viewModel.onStartTracking()}" />
 ```
 
 
