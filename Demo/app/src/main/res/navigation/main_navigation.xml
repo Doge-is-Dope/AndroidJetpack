@@ -6,30 +6,16 @@
     app:startDestination="@id/fragment_page">
 
     <fragment
-        android:id="@+id/fragment_list"
-        android:name="com.chunchiehliang.kotlin.demo.ui.ListFragment"
-        android:label="List Fragment"
-        tools:layout="@layout/fragment_list">
-
-        <action
-            android:id="@+id/action_list_to_detail"
-            app:destination="@id/fragment_detail" />
-    </fragment>
-
-    <fragment
         android:id="@+id/fragment_page"
         android:name="com.chunchiehliang.kotlin.demo.ui.PagerFragment"
         android:label="PageFragment"
         tools:layout="@layout/fragment_pager">
-        <action
-            android:id="@+id/action_pageFragment_to_detail_destination"
-            app:destination="@id/fragment_detail" />
     </fragment>
 
-    <fragment
-        android:id="@+id/fragment_detail"
-        android:name="com.chunchiehliang.kotlin.demo.ui.DetailFragment"
-        android:label="Detail Fragment" />
+    <!--<fragment-->
+        <!--android:id="@+id/fragment_detail"-->
+        <!--android:name="com.chunchiehliang.kotlin.demo.ui.DetailFragment"-->
+        <!--android:label="Detail Fragment" />-->
 
 
 </navigation>

@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.chunchiehliang.kotlin.demo.R
 import com.chunchiehliang.kotlin.demo.databinding.FragmentPagerBinding
@@ -49,7 +48,8 @@ class PagerFragment : Fragment() {
         tabLayout.setupWithViewPager(viewPager)
 
         bottomSheetBehavior = BottomSheetBehavior.from(view.findViewById(R.id.filter_sheet)!!)
-        // todo: fix this
+
+        // todo: fix this using updateFiltersUi
         bottomSheetBehavior.state = STATE_HIDDEN
 
         filterFab.setOnClickListener {
@@ -59,7 +59,7 @@ class PagerFragment : Fragment() {
         viewPager.adapter = PagerAdapter(childFragmentManager)
     }
 
-//   todo: fix this
+    // todo: fix this
     private fun updateFiltersUi(uiState: TransientUiState) {
         val showFab = !uiState.isAgendaPage && !uiState.hasAnyFilters
         val hideable = uiState.isAgendaPage || !uiState.hasAnyFilters
@@ -82,9 +82,7 @@ class PagerFragment : Fragment() {
         }
     }
 
-    inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(
-        fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-    ) {
+    inner class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getCount(): Int = COUNT
 

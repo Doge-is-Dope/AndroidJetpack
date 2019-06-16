@@ -72,8 +72,6 @@ class FilterFragment : Fragment() {
             }
             updateFilterHeadersAlpha(slideOffset)
         }
-
-
     }
 
     private fun updateFilterHeadersAlpha(slideOffset: Float) {

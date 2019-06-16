@@ -1,8 +1,8 @@
 package com.chunchiehliang.kotlin.room.sleeptracker
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.chunchiehliang.kotlin.room.database.SleepDatabaseDao
@@ -44,6 +44,34 @@ class SleepTrackerViewModel(
      */
     val nightsString = Transformations.map(nights) { nights ->
         formatNights(nights, application.resources)
+    }
+
+    val startButtonVisible = Transformations.map(tonight) {
+        null == it
+    }
+
+    val stopButtonVisible = Transformations.map(tonight) {
+        null != it
+    }
+
+    val clearButtonVisible = Transformations.map(nights) {
+        it?.isNotEmpty()
+    }
+
+    private val _showSnackbarEvent = MutableLiveData<Boolean>()
+    val showSnackbarEvent: LiveData<Boolean>
+        get() = _showSnackbarEvent
+
+    fun doneShowingSnackbar(){
+        _showSnackbarEvent.value = false
+    }
+
+    private val _navigateToSleepQuality = MutableLiveData<SleepNight>()
+    val navigateToSleepQuality: LiveData<SleepNight>
+        get() = _navigateToSleepQuality
+
+    fun doneNavigating() {
+        _navigateToSleepQuality.value = null
     }
 
     init {
@@ -122,6 +150,8 @@ class SleepTrackerViewModel(
             oldNight.endTimeMilli = System.currentTimeMillis()
 
             update(oldNight)
+
+            _navigateToSleepQuality.value = oldNight
         }
     }
 
@@ -135,6 +165,8 @@ class SleepTrackerViewModel(
 
             // And clear tonight since it's no longer in the database
             tonight.value = null
+
+            _showSnackbarEvent.value = true
         }
     }
 

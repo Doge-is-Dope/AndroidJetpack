@@ -335,7 +335,7 @@ private suspend fun suspendFunction() {
 }
 ```
 
-7. Add to layout using Databinding if it's necessary
+7. Add to layout using Databinding
 ```xml
 <Button
 android:onClick="@{() -> viewModel.onStartTracking()}" />
