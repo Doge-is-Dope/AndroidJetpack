@@ -2,7 +2,7 @@
 
 - [Create an Entity]()
 - [Data Access Object (DAO)]()
-- [Create a Room database]()
+- [Create a Room database Singleton]()
 - [Add a ViewModel]()
 - [Multithreading & Coroutines]()
 
@@ -57,7 +57,7 @@ interface SleepDatabaseDao {
 }
 ```
 
-### Create a Room database
+### Create a Room database Singleton
 
 1. Extend RoomDatabase and create Database
 
