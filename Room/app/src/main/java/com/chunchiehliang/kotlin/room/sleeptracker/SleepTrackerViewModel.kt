@@ -166,7 +166,7 @@ class SleepTrackerViewModel(
             // And clear tonight since it's no longer in the database
             tonight.value = null
 
-            _showSnackbarEvent.value = true
+             _showSnackbarEvent.value = true
         }
     }
 

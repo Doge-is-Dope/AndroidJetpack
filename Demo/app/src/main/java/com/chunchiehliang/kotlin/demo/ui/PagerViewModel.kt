@@ -5,9 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PagerViewModel : ViewModel() {
-    private val _transientUiState = MutableLiveData<TransientUiState>()
-    val transientUiState: LiveData<TransientUiState>
-        get() = _transientUiState
+    private val _uiState = MutableLiveData<UIState>()
+    val uiState: LiveData<UIState>
+        get() = _uiState
+
+    private val _showFabEvent = MutableLiveData<Boolean>()
+    val showFabEvent: LiveData<Boolean>
+        get() = _showFabEvent
+
+    fun handleFab(pageIndex : Int ){
+        when(pageIndex) {
+            0, 2-> _showFabEvent.value = true
+            else -> _showFabEvent.value = false
+        }
+    }
 }
 
-data class TransientUiState(val isAgendaPage: Boolean, val hasAnyFilters: Boolean)
+data class UIState(val fabVisible: Boolean = true)

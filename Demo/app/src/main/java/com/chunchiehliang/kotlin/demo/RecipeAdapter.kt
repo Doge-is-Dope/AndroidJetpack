@@ -6,28 +6,28 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-class WordAdapter(val wordList: MutableList<WordViewModel.Word>) :
-    RecyclerView.Adapter<WordAdapter.ListItemViewHolder>() {
+class RecipeAdapter(val recipeList: MutableList<RecipeViewModel.Recipe>) :
+    RecyclerView.Adapter<RecipeAdapter.ListItemViewHolder>() {
 
-    override fun getItemCount(): Int = wordList.size
+    override fun getItemCount(): Int = recipeList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: ViewDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_word, parent, false)
+        val binding: ViewDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_recipe, parent, false)
 
 
         return ListItemViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
-        holder.bind(wordList[position])
+        holder.bind(recipeList[position])
     }
 
 
 
     class ListItemViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(word: Any) {
-            binding.setVariable(BR.wordViewModel, word)
+        fun bind(recipe: Any) {
+            binding.setVariable(BR.recipeViewModel, recipe)
             binding.executePendingBindings()
         }
     }

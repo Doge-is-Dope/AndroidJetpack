@@ -3,4 +3,6 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="filter">Filter</string>
+
+    <string name="image_description_recipe">recipe_image</string>
 </resources>

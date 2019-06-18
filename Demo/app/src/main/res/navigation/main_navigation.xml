@@ -11,11 +11,4 @@
         android:label="PageFragment"
         tools:layout="@layout/fragment_pager">
     </fragment>
-
-    <!--<fragment-->
-        <!--android:id="@+id/fragment_detail"-->
-        <!--android:name="com.chunchiehliang.kotlin.demo.ui.DetailFragment"-->
-        <!--android:label="Detail Fragment" />-->
-
-
 </navigation>

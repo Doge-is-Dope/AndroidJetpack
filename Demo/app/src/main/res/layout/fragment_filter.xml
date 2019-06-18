@@ -5,7 +5,6 @@
     tools:context=".ui.filter.FilterFragment">
 
     <data>
-
         <variable
             name="headerAlpha"
             type="androidx.databinding.ObservableFloat" />
