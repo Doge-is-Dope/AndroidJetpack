@@ -6,28 +6,28 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-class RecipeAdapter(val recipeList: MutableList<RecipeViewModel.Recipe>) :
-    RecyclerView.Adapter<RecipeAdapter.ListItemViewHolder>() {
+class MovieAdapter(val movieList: MutableList<MovieViewModel.Movie>) :
+    RecyclerView.Adapter<MovieAdapter.ListItemViewHolder>() {
 
-    override fun getItemCount(): Int = recipeList.size
+    override fun getItemCount(): Int = movieList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: ViewDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_recipe, parent, false)
+        val binding: ViewDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_movie, parent, false)
 
 
         return ListItemViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
-        holder.bind(recipeList[position])
+        holder.bind(movieList[position])
     }
 
 
 
     class ListItemViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Any) {
-            binding.setVariable(BR.recipeViewModel, recipe)
+            binding.setVariable(BR.movieViewModel, recipe)
             binding.executePendingBindings()
         }
     }

@@ -88,9 +88,9 @@ class PagerFragment : Fragment() {
 
         override fun getPageTitle(position: Int): CharSequence {
             return when (position) {
-                0 -> "All"
-                1 -> "Favorite"
-                2 -> "My Recipe"
+                0 -> getString(R.string.text_now_playing)
+                1 -> getString(R.string.text_coming_soon)
+                2 -> getString(R.string.text_my_favorite)
                 else -> "tab $position"
             }
         }

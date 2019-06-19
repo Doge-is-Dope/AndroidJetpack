@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.demo.R
-import com.chunchiehliang.kotlin.demo.RecipeAdapter
-import com.chunchiehliang.kotlin.demo.RecipeViewModel
+import com.chunchiehliang.kotlin.demo.MovieAdapter
+import com.chunchiehliang.kotlin.demo.MovieViewModel
 import com.chunchiehliang.kotlin.demo.databinding.FragmentListBinding
 
 
@@ -25,14 +25,14 @@ class ListFragment : Fragment() {
         val binding: FragmentListBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_list, container, false)
 
-        val viewModel: RecipeViewModel = ViewModelProviders.of(this).get(RecipeViewModel::class.java)
+        val viewModel: MovieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
 
 //        binding.card.setOnClickListener {
 //            findNavController().navigate(R.id.action_list_to_detail)
 //        }
 
         binding.recyclerWordList.layoutManager = LinearLayoutManager(context)
-        binding.recyclerWordList.adapter = RecipeAdapter(viewModel.wordList)
+        binding.recyclerWordList.adapter = MovieAdapter(viewModel.wordList)
         binding.recyclerWordList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.margin_normal)).toInt()))
 
         return binding.root
