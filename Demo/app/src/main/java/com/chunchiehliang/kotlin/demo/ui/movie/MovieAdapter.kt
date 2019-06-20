@@ -14,13 +14,7 @@ class MovieAdapter(val movieList: MutableList<MovieViewModel.Movie>) :
     override fun getItemCount(): Int = movieList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: ViewDataBinding = DataBindingUtil.inflate(
-            layoutInflater,
-            R.layout.list_item_movie, parent, false
-        )
-
-        return MovieItemViewHolder(binding)
+        return from(parent)
     }
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
@@ -32,6 +26,17 @@ class MovieAdapter(val movieList: MutableList<MovieViewModel.Movie>) :
         fun bind(movie: Any) {
             binding.setVariable(BR.movieViewModel, movie)
             binding.executePendingBindings()
+        }
+    }
+
+    companion object {
+        private fun from(parent: ViewGroup): MovieItemViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val binding: ViewDataBinding = DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.list_item_movie, parent, false
+            )
+            return MovieItemViewHolder(binding)
         }
     }
 }
