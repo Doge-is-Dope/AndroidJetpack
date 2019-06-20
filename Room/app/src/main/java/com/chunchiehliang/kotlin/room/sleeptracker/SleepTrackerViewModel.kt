@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.chunchiehliang.kotlin.room.database.SleepDatabaseDao
 import com.chunchiehliang.kotlin.room.database.SleepNight
-import formatNights
+import com.chunchiehliang.kotlin.room.formatNights
 import kotlinx.coroutines.*
 
 /**
@@ -37,7 +37,7 @@ class SleepTrackerViewModel(
 
     private var tonight = MutableLiveData<SleepNight?>()
 
-    private val nights = database.getAllNights()
+    val nights = database.getAllNights()
 
     /**
      * Converted nights to Spanned for displaying.

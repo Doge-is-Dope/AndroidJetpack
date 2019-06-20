@@ -7,7 +7,7 @@
 
         <variable
             name="movieViewModel"
-            type="com.chunchiehliang.kotlin.demo.MovieViewModel.Movie" />
+            type="com.chunchiehliang.kotlin.demo.ui.movie.MovieViewModel.Movie" />
     </data>
 
 
@@ -17,7 +17,7 @@
 
 
         <ImageView
-            android:id="@+id/image_recipe"
+            android:id="@+id/image_movie_thumbnail"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/filter_sheet_background"
@@ -29,20 +29,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_recipe_title"
+            android:id="@+id/text_movie_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_normal"
             android:text="@{movieViewModel.name}"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/text_recipe_time"
-            app:layout_constraintStart_toEndOf="@id/image_recipe"
+            app:layout_constraintBottom_toTopOf="@id/text_movie_genre"
+            app:layout_constraintStart_toEndOf="@id/image_movie_thumbnail"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Orange" />
 
         <TextView
-            android:id="@+id/text_recipe_time"
+            android:id="@+id/text_movie_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal"
@@ -50,8 +50,8 @@
             android:layout_marginBottom="@dimen/spacing_normal"
             android:text="@{movieViewModel.time}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_recipe"
-            app:layout_constraintTop_toBottomOf="@id/text_recipe_title"
+            app:layout_constraintStart_toEndOf="@id/image_movie_thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/text_movie_title"
             tools:text="橘" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

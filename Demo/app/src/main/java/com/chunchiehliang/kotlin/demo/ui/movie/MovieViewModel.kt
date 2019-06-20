@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo
+package com.chunchiehliang.kotlin.demo.ui.movie
 
 import androidx.lifecycle.ViewModel
 import kotlin.random.Random

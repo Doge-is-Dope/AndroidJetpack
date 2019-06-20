@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.chunchiehliang.kotlin.demo.R
 import com.chunchiehliang.kotlin.demo.databinding.FragmentPagerBinding
+import com.chunchiehliang.kotlin.demo.ui.movie.MovieFragment
 import com.chunchiehliang.kotlin.demo.widget.FadingSnackbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
@@ -35,7 +36,7 @@ class PagerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentPagerBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_pager, container, false)
 
-        filterFab = binding.fabNewRecipe
+        filterFab = binding.fabFilter
         viewPager = binding.viewpager
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -51,7 +52,7 @@ class PagerFragment : Fragment() {
         pagerViewModel = ViewModelProviders.of(this).get(PagerViewModel::class.java)
 
         pagerViewModel.showFabEvent.observe(this, Observer {
-            if (it) binding.fabNewRecipe.show() else binding.fabNewRecipe.hide()
+            if (it) binding.fabFilter.show() else binding.fabFilter.hide()
         })
 
         return binding.root
@@ -82,7 +83,7 @@ class PagerFragment : Fragment() {
         override fun getItem(position: Int): Fragment {
             return when (position) {
                 1 -> TestFragment()
-                else -> ListFragment()
+                else -> MovieFragment()
             }
         }
 

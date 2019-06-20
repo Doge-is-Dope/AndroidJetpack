@@ -33,7 +33,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:minHeight="?actionBarSize"
-                android:text="Title"
+                android:text="@string/app_name"
                 android:textAppearance="@style/TextAppearance.Demo.ToolbarTitle" />
 
         </FrameLayout>
