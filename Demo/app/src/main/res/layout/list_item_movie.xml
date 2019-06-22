@@ -6,52 +6,69 @@
     <data>
 
         <variable
-            name="movieViewModel"
-            type="com.chunchiehliang.kotlin.demo.ui.movie.MovieViewModel.Movie" />
+            name="movie"
+            type="com.chunchiehliang.kotlin.demo.database.Movie" />
+
+        <variable
+            name="clickListener"
+            type="com.chunchiehliang.kotlin.demo.ui.movie.MovieListener" />
     </data>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="96dp">
+        android:layout_height="144dp"
+        app:cardCornerRadius="@dimen/spacing_normal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{() -> clickListener.onClick(movie)}">
 
 
-        <ImageView
-            android:id="@+id/image_movie_thumbnail"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/filter_sheet_background"
-            android:contentDescription="@string/image_description_recipe"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/image_movie_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:background="@drawable/filter_sheet_background"
+                android:contentDescription="@string/image_description_recipe"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="2:3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_movie_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:text="@{movieViewModel.name}"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/text_movie_genre"
-            app:layout_constraintStart_toEndOf="@id/image_movie_thumbnail"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Orange" />
+            <TextView
+                android:id="@+id/text_movie_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/image_movie_thumbnail"
+                app:layout_constraintTop_toTopOf="@id/image_movie_thumbnail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:movieTitle="@{movie}"
+                tools:text="Dark Phoenix" />
 
-        <TextView
-            android:id="@+id/text_movie_genre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:text="@{movieViewModel.time}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_movie_thumbnail"
-            app:layout_constraintTop_toBottomOf="@id/text_movie_title"
-            tools:text="橘" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/text_movie_genre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
+                app:layout_constraintStart_toEndOf="@id/image_movie_thumbnail"
+                app:layout_constraintTop_toBottomOf="@id/text_movie_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:movieReleaseDate="@{movie}"
+                tools:text="2019-06-05" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

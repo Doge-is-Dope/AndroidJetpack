@@ -9,9 +9,16 @@ class PagerViewModel : ViewModel() {
     val uiState: LiveData<UIState>
         get() = _uiState
 
+
+//    val isLoading: LiveData<Boolean>
+
     private val _showFabEvent = MutableLiveData<Boolean>()
     val showFabEvent: LiveData<Boolean>
         get() = _showFabEvent
+
+    init {
+
+    }
 
     fun handleFab(pageIndex : Int ){
         when(pageIndex) {

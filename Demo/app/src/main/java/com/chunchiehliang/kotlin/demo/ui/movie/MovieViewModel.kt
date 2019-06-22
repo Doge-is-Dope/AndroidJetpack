@@ -1,33 +1,41 @@
 package com.chunchiehliang.kotlin.demo.ui.movie
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlin.random.Random
+import com.chunchiehliang.kotlin.demo.database.Movie
+import com.chunchiehliang.kotlin.demo.util.createDummyList
+import kotlinx.coroutines.*
 
 class MovieViewModel : ViewModel() {
-    data class Movie(val name: String, val time: String)
 
-    lateinit var currentWord: Movie
+    private var viewModelJob = Job()
 
-    val wordList: MutableList<Movie> = mutableListOf()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    private val _movieList = MutableLiveData<List<Movie>>()
+    val movieList: LiveData<List<Movie>>
+        get() = _movieList
 
     init {
-        setWordList()
-        setWord()
+        initializeMovie()
     }
 
-    private fun setWordList() {
-        wordList.add(Movie("Caesar Salad", "1 hr"))
-        wordList.add(Movie("Classic Rib Eye", "50 min"))
-        wordList.add(Movie("French Onion Soup", "45 min"))
-        wordList.add(Movie("Mango", "20 min"))
-        wordList.add(Movie("Orange", "3 min"))
-        wordList.add(Movie("Orange", "3 min"))
-        wordList.add(Movie("Orange", "3 min"))
-        wordList.add(Movie("Orange", "3 min"))
-        wordList.add(Movie("Orange", "3 min"))
+    private fun initializeMovie() {
+        uiScope.launch {
+//            delay(10000)
+            _movieList.value = createDummyList()
+        }
     }
 
-    fun setWord() {
-        currentWord = wordList[Random.nextInt(wordList.size)]
+    /**
+     * Called when the ViewModel is dismantled.
+     * At this point, we want to cancel all coroutines;
+     * otherwise we end up with processes that have nowhere to return to
+     * using memory and resources.
+     */
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.chunchiehliang.kotlin.demo.ui.PagerViewModel" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
@@ -21,6 +27,24 @@
                 android:layout_height="match_parent" />
 
         </com.chunchiehliang.kotlin.demo.widget.CustomSwipeRefreshLayout>
+
+        <!--<ProgressBar-->
+            <!--android:id="@+id/loading"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:indeterminate="true"-->
+            <!--android:indeterminateTint="@color/light_grey"-->
+            <!--app:goneUnless="@{viewModel.isLoading}"/>-->
+
+        <com.chunchiehliang.kotlin.demo.widget.FadingSnackbar
+            android:id="@+id/snackbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="@dimen/snackbar_margin_bottom_fab"
+            android:layout_marginEnd="0dp"
+            android:visibility="gone" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_filter"
