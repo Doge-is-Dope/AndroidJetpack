@@ -62,7 +62,7 @@ class SleepTrackerViewModel(
     val showSnackbarEvent: LiveData<Boolean>
         get() = _showSnackbarEvent
 
-    fun doneShowingSnackbar(){
+    fun doneShowingSnackbar() {
         _showSnackbarEvent.value = false
     }
 
@@ -73,6 +73,19 @@ class SleepTrackerViewModel(
     fun doneNavigating() {
         _navigateToSleepQuality.value = null
     }
+
+    private val _navigateToSleepDataQuality = MutableLiveData<Long>()
+    val navigateToSleepDataQuality
+        get() = _navigateToSleepDataQuality
+
+    fun onSleepNightClicked(id: Long) {
+        _navigateToSleepDataQuality.value = id
+    }
+
+    fun onSleepDataQualityNavigated() {
+        _navigateToSleepDataQuality.value = null
+    }
+
 
     init {
         initializeTonight()
@@ -166,7 +179,7 @@ class SleepTrackerViewModel(
             // And clear tonight since it's no longer in the database
             tonight.value = null
 
-             _showSnackbarEvent.value = true
+            _showSnackbarEvent.value = true
         }
     }
 
@@ -180,5 +193,7 @@ class SleepTrackerViewModel(
         super.onCleared()
         viewModelJob.cancel()
     }
+
+
 }
 

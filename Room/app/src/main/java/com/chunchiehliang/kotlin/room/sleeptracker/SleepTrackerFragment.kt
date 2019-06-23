@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.room.R
 import com.chunchiehliang.kotlin.room.database.SleepDatabase
 import com.chunchiehliang.kotlin.room.databinding.FragmentSleepTrackerBinding
@@ -44,14 +43,21 @@ class SleepTrackerFragment : Fragment() {
         binding.sleepTrackerViewModel = sleepTrackerViewModel
         binding.lifecycleOwner = this
 
-        val manager = GridLayoutManager(context,  3)
+        val manager = GridLayoutManager(context, 3)
         binding.sleepList.layoutManager = manager
 
         // Setup the RecyclerView adapter
-        val adapter = SleepNightAdapter(SleepNightListener{nightID ->
-            Toast.makeText(context, "$nightID", Toast.LENGTH_SHORT).show()
+        val adapter = SleepNightAdapter(SleepNightListener { nightID ->
+            sleepTrackerViewModel.onSleepNightClicked(nightID)
+//            Toast.makeText(context, "$nightID", Toast.LENGTH_SHORT).show()
         })
         binding.sleepList.adapter = adapter
+
+        sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
 
         sleepTrackerViewModel.navigateToSleepQuality.observe(this, Observer { night ->
             night?.let {
@@ -60,6 +66,16 @@ class SleepTrackerFragment : Fragment() {
                         .actionSleepTrackerFragmentToSleepQualityFragment(night.nightId)
                 )
                 sleepTrackerViewModel.doneNavigating()
+            }
+        })
+
+        sleepTrackerViewModel.navigateToSleepDataQuality.observe(this, Observer { nightId ->
+            nightId?.let {
+                this.findNavController().navigate(
+                    SleepTrackerFragmentDirections
+                        .actionSleepTrackerFragmentToSleepDetailFragment(nightId)
+                )
+                sleepTrackerViewModel.onSleepDataQualityNavigated()
             }
         })
 
@@ -73,13 +89,6 @@ class SleepTrackerFragment : Fragment() {
                 sleepTrackerViewModel.doneShowingSnackbar()
             }
         })
-
-        sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.submitList(it)
-            }
-        })
-
 
         return binding.root
     }
