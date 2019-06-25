@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.demo.R
 import com.chunchiehliang.kotlin.demo.databinding.FragmentMovieBinding
@@ -27,9 +28,9 @@ class MovieFragment : Fragment() {
         val viewModel: MovieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
 
         val adapter = MovieAdapter(MovieListener { movieId ->
+            viewModel.onMovieClicked(movieId)
             Toast.makeText(context, "$movieId", Toast.LENGTH_SHORT).show()
         })
-
         binding.recyclerMovieList.adapter = adapter
         binding.recyclerMovieList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.margin_normal)).toInt()))
 
@@ -39,6 +40,13 @@ class MovieFragment : Fragment() {
             }
         })
 
+//        viewModel.navigateToMovieDetail.observe(this, Observer { movieId ->
+//            movieId?.let {
+//                this.findNavController().navigate(MovieFragmentDirections.
+//                    actionMovieFragmentToMovieDetailFragment(movieId))
+//                viewModel.onMovieDetailNavigated()
+//            }
+//        })
 
         return binding.root
     }

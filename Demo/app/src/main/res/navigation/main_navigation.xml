@@ -7,8 +7,31 @@
 
     <fragment
         android:id="@+id/fragment_page"
-        android:name="com.chunchiehliang.kotlin.demo.ui.PagerFragment"
+        android:name="com.chunchiehliang.kotlin.demo.ui.pager.PagerFragment"
         android:label="PageFragment"
         tools:layout="@layout/fragment_pager">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.chunchiehliang.kotlin.demo.ui.movie.MovieFragment"
+        android:label="MovieFragment"
+        tools:layout="@layout/fragment_movie">
+
+        <action
+            android:id="@+id/action_movieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.chunchiehliang.kotlin.demo.ui.moviedetail.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <argument
+            android:name="movieId"
+            app:argType="long" />
     </fragment>
 </navigation>

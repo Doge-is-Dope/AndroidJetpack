@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.chunchiehliang.kotlin.demo.ui.PagerViewModel" />
+            type="com.chunchiehliang.kotlin.demo.ui.pager.PagerViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -5,7 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.chunchiehliang.kotlin.demo.database.Movie
 import com.chunchiehliang.kotlin.demo.util.createDummyList
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class MovieViewModel : ViewModel() {
 
@@ -17,20 +20,31 @@ class MovieViewModel : ViewModel() {
     val movieList: LiveData<List<Movie>>
         get() = _movieList
 
+    private val _navigateToMovieDetail = MutableLiveData<Long>()
+    val navigateToMovieDetail: LiveData<Long>
+        get() = _navigateToMovieDetail
+
+    fun onMovieClicked(id: Long) {
+        _navigateToMovieDetail.value = id
+    }
+
+    fun onMovieDetailNavigated() {
+        _navigateToMovieDetail.value = null
+    }
+
     init {
         initializeMovie()
     }
 
     private fun initializeMovie() {
         uiScope.launch {
-//            delay(10000)
+            //            delay(10000)
             _movieList.value = createDummyList()
         }
     }
 
     /**
-     * Called when the ViewModel is dismantled.
-     * At this point, we want to cancel all coroutines;
+     * Called when the ViewModel is dismantled. At this point, we want to cancel all coroutines;
      * otherwise we end up with processes that have nowhere to return to
      * using memory and resources.
      */
@@ -38,4 +52,6 @@ class MovieViewModel : ViewModel() {
         super.onCleared()
         viewModelJob.cancel()
     }
+
+
 }

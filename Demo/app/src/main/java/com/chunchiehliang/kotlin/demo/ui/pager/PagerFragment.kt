@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo.ui
+package com.chunchiehliang.kotlin.demo.ui.pager
 
 
 import android.os.Bundle
@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.chunchiehliang.kotlin.demo.R
 import com.chunchiehliang.kotlin.demo.databinding.FragmentPagerBinding
+import com.chunchiehliang.kotlin.demo.ui.TestFragment
 import com.chunchiehliang.kotlin.demo.ui.movie.MovieFragment
 import com.chunchiehliang.kotlin.demo.widget.FadingSnackbar
 import com.google.android.material.bottomsheet.BottomSheetBehavior

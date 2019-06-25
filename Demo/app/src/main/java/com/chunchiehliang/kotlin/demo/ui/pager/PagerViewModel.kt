@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo.ui
+package com.chunchiehliang.kotlin.demo.ui.pager
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
