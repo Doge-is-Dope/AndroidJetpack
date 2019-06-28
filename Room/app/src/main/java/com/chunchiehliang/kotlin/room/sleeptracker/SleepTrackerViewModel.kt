@@ -141,7 +141,6 @@ class SleepTrackerViewModel(
             // Create a new night, which captures the current time,
             // and insert it into the database.
             val newNight = SleepNight()
-
             insert(newNight)
 
             tonight.value = getTonightFromDatabase()
