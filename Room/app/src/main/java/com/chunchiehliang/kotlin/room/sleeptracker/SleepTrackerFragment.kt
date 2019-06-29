@@ -3,8 +3,9 @@ package com.chunchiehliang.kotlin.room.sleeptracker
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -44,6 +45,12 @@ class SleepTrackerFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val manager = GridLayoutManager(context, 3)
+        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int = when (position) {
+                0 -> 3
+                else -> 1
+            }
+        }
         binding.sleepList.layoutManager = manager
 
         // Setup the RecyclerView adapter
@@ -90,6 +97,7 @@ class SleepTrackerFragment : Fragment() {
             }
         })
 
+        binding.rootLayout.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         return binding.root
     }
 }
