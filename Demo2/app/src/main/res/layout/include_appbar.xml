@@ -22,9 +22,10 @@
                 android:id="@+id/profile_button"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_gravity="center_vertical|start"
+                android:layout_gravity="center_vertical|end"
                 android:foreground="?selectableItemBackground"
-                android:padding="@dimen/spacing_micro" />
+                android:padding="@dimen/spacing_micro"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/title"

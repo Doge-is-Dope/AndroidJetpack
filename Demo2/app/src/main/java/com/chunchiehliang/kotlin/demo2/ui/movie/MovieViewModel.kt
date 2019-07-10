@@ -1,20 +1,19 @@
 package com.chunchiehliang.kotlin.demo2.ui.movie
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.chunchiehliang.kotlin.demo2.BuildConfig
 import com.chunchiehliang.kotlin.demo2.model.Movie
+import com.chunchiehliang.kotlin.demo2.network.MovieApi
 import com.chunchiehliang.kotlin.demo2.util.createDummyList
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class MovieViewModel : ViewModel() {
 
     private var viewModelJob = Job()
-
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    private var coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _movieList = MutableLiveData<List<Movie>>()
     val movieList: LiveData<List<Movie>>
@@ -33,13 +32,28 @@ class MovieViewModel : ViewModel() {
     }
 
     init {
-        initializeMovie()
+        getNowPlayingMovies()
     }
 
-    private fun initializeMovie() {
-        uiScope.launch {
-            //            delay(10000)
-            _movieList.value = createDummyList()
+
+    private fun getNowPlayingMovies() {
+        coroutineScope.launch {
+            try {
+
+                Log.d("MovieViewModel", "Loading...")
+
+                val apiKey = BuildConfig.API_KEY
+                val result = MovieApi.retrofitService.getNowPlayingMovies(apiKey = apiKey, language = "en-US", page = 1)
+
+                Log.d("MovieViewModel", "Done!")
+
+                _movieList.value = result.movies
+
+                Log.d("MovieViewModel", _movieList.value?.size.toString())
+
+            } catch (e: Exception) {
+
+            }
         }
     }
 
@@ -52,6 +66,4 @@ class MovieViewModel : ViewModel() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
-
 }

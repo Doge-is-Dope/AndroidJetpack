@@ -24,13 +24,20 @@ class MovieAdapter(val onClickListener: MovieListener) : ListAdapter<Movie, Movi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
-        return MovieItemViewHolder(ListItemMovieBinding.inflate(LayoutInflater.from(parent.context)))
+        return from(parent)
     }
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
         val movie = getItem(position)
         holder.bind(movie)
         holder.itemView.setOnClickListener { onClickListener.onClick(movie) }
+    }
+
+    fun from(parent: ViewGroup): MovieItemViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view: ListItemMovieBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.list_item_movie, parent, false)
+        return MovieItemViewHolder(view)
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Movie>() {

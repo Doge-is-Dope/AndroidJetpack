@@ -15,15 +15,38 @@
         android:layout_height="match_parent"
         tools:context=".ui.moviedetail.MovieDetailFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(viewModel.selectedMovie.id)}"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/include_appbar" />
+
+        <ImageView
+            android:id="@+id/image_movie_backdrop"
+            android:layout_width="0dp"
+            android:layout_height="240dp"
+            android:scaleType="centerCrop"
+            app:backDropImageUrl="@{viewModel.selectedMovie.backDropPath}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_bar" />
+
+        <TextView
+            android:id="@+id/text_movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.selectedMovie.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_movie_backdrop"
             tools:text="123" />
+
+        <TextView
+            android:id="@+id/text_movie_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.selectedMovie.releaseDate}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_movie_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

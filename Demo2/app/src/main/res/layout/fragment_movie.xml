@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.chunchiehliang.kotlin.demo2.ui.movie.MovieViewModel" />
+    </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/include_appbar"/>
+        <include layout="@layout/include_appbar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movie_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:listData="@{viewModel.movieList}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/list_item_movie" />
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/white_90"
+            app:fabAlignmentMode="end"
+            app:hideOnScroll="true"
+            app:navigationIcon="@drawable/ic_launcher_foreground" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/filter"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            app:fabSize="auto"
+            app:layout_anchor="@id/bottom_app_bar"
+            app:srcCompat="@drawable/ic_filter" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
