@@ -16,6 +16,8 @@ import com.chunchiehliang.kotlin.demo2.databinding.FragmentMovieBinding
 import com.google.android.material.snackbar.Snackbar
 
 
+
+
 class MovieFragment : Fragment() {
 
     private val viewModel: MovieViewModel by lazy {
@@ -36,7 +38,6 @@ class MovieFragment : Fragment() {
         })
         binding.recyclerMovieList.adapter = adapter
         binding.recyclerMovieList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.margin_normal)).toInt()))
-//        hideBottomNav(binding.recyclerMovieList, activity!!.findViewById(R.id.bottom_app_bar))
 
         viewModel.movieList.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -57,6 +58,8 @@ class MovieFragment : Fragment() {
             Snackbar.make(binding.coordinatorLayout, "clicked", Snackbar.LENGTH_SHORT)
                 .setAnchorView(binding.fabFilter)
                 .show()
+
+//           this.findNavController().navigate(R.id.action_movieFragment_to_testFragment)
         }
 
         return binding.root

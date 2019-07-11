@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_movieFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_movieFragment_to_testFragment"
+            app:destination="@id/testFragment" />
     </fragment>
 
     <fragment
@@ -26,4 +29,10 @@
             android:name="selectedMovie"
             app:argType="com.chunchiehliang.kotlin.demo2.model.Movie" />
     </fragment>
+
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.chunchiehliang.kotlin.demo2.ui.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" />
 </navigation>

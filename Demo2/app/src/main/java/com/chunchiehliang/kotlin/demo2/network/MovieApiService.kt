@@ -1,5 +1,6 @@
 package com.chunchiehliang.kotlin.demo2.network
 
+import com.chunchiehliang.kotlin.demo2.model.GenreResponse
 import com.chunchiehliang.kotlin.demo2.model.Movie
 import com.chunchiehliang.kotlin.demo2.model.MovieResponse
 import com.squareup.moshi.Moshi
@@ -29,6 +30,12 @@ interface MovieApiService {
         @Query("language") language: String,
         @Query("page") page: Int
     ): MovieResponse
+
+    @GET("genre/movie/list")
+    suspend fun getGenres(
+        @Query("api_key")  apiKey: String,
+        @Query("language") language: String
+    ):GenreResponse
 }
 
 object MovieApi {

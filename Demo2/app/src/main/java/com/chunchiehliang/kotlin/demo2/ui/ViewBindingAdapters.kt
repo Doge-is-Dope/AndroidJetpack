@@ -1,6 +1,7 @@
 package com.chunchiehliang.kotlin.demo2.ui
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,14 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
 }
 
 
+@BindingAdapter("movieGenres")
+fun TextView.movieGenres(genres : List<String>?) {
+    genres?.let {
+        text = genres.joinToString(" - ")
+    }
+}
+
+
 private const val IMAGE_BASE_URL = "http://image.tmdb.org/t/p/"
 
 @BindingAdapter("posterImageUrl")
@@ -25,7 +34,7 @@ fun bindPosterImage(imgView: ImageView, imgUrl: String?) {
         val imgUri = (IMAGE_BASE_URL + "w185/" + imgUrl).toUri().buildUpon().scheme("https").build()
         Glide.with(imgView.context)
             .load(imgUri)
-            .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+            .apply(RequestOptions.placeholderOf(R.drawable.filter_sheet_background))
             .into(imgView)
     }
 }
@@ -36,7 +45,7 @@ fun bindBackDropImage(imgView: ImageView, imgUrl: String?) {
         val imgUri = (IMAGE_BASE_URL + "w500/" + imgUrl).toUri().buildUpon().scheme("https").build()
         Glide.with(imgView.context)
             .load(imgUri)
-            .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+            .apply(RequestOptions.placeholderOf(R.drawable.filter_sheet_background))
             .into(imgView)
     }
 }
