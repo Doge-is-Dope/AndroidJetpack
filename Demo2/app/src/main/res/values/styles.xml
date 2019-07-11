@@ -1,14 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">?colorPrimary</item>
         <item name="toolbarStyle">@style/Widget.Toolbar</item>
-        <item name="android:statusBarColor">@color/status_bar</item>
+        <!--<item name="android:statusBarColor">@color/status_bar</item>-->
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -18,7 +17,7 @@
 
     <style name="AppTheme.LightNav" parent="AppTheme.NoActionBar" />
 
-    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.MaterialComponents.Light" />
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.AppCompat.DayNight" />
 
     <style name="Widget.AppBar" parent="@style/Widget.Design.AppBarLayout">
         <item name="popupTheme">@style/AppTheme.PopupTheme</item>
@@ -32,6 +31,24 @@
         <item name="popupTheme">@style/AppTheme.PopupTheme</item>
     </style>
 
+
+    <style name="Widget.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="backgroundTint">@color/white_90</item>
+    </style>
+
+    <style name="Widget.Demo" parent="@android:style/Widget" />
+
+    <style name="Widget.Demo.Tag">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:lines">1</item>
+        <item name="android:textAppearance">@style/TextAppearance.Demo.Tag</item>
+    </style>
+
+    <style name="Widget.Demo.Tag.Inline">
+        <item name="android:drawablePadding">@dimen/spacing_micro</item>
+        <item name="android:drawableStart">@drawable/tag_dot</item>
+    </style>
+
     <style name="Widget.Demo.TextView" parent="@android:style/Widget.Material.TextView">
         <item name="android:textAppearance">@style/TextAppearance.Demo.Body</item>
         <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
@@ -41,7 +58,13 @@
         <item name="android:fontFamily">@font/work_sans</item>
     </style>
 
+    <style name="TextAppearance.Demo.Tag" parent="@style/TextAppearance.Demo.ListSecondary" />
+
     <style name="TextAppearance.Demo.Body" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Demo.ListSecondary" parent="@style/TextAppearance.AppCompat.Body1">
         <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 

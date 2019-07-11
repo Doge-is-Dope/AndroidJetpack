@@ -10,6 +10,8 @@
     <dimen name="bottom_sheet_header_shadow_height">4dp</dimen>
     <dimen name="bottom_sheet_peek_height">48dp</dimen>
     <dimen name="snackbar_margin_bottom_fab">72dp</dimen>
+    <dimen name="tag_dot_size">12dp</dimen>
+    <dimen name="tag_corner_radius">100dp</dimen>
 
     <item name="text_line_spacing" format="float" type="dimen">1.2</item>
 </resources>

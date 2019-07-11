@@ -10,33 +10,31 @@
             type="com.chunchiehliang.kotlin.demo2.model.Movie" />
     </data>
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/spacing_normal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <ImageView
                 android:id="@+id/image_movie_thumbnail"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="144dp"
                 android:layout_marginStart="@dimen/margin_normal"
                 android:layout_marginTop="@dimen/margin_normal"
                 android:layout_marginBottom="@dimen/margin_normal"
                 android:background="@drawable/filter_sheet_background"
                 android:contentDescription="@string/image_description_recipe"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/ic_launcher_background"
-                app:posterImageUrl="@{movie.posterPath}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="2:3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:posterImageUrl="@{movie.posterPath}"
+                tools:src="@drawable/ic_launcher_background" />
 
             <TextView
                 android:id="@+id/text_movie_title"
@@ -52,21 +50,6 @@
                 app:layout_constraintTop_toTopOf="@id/image_movie_thumbnail"
                 tools:text="Dark Phoenix" />
 
-
-
-            <TextView
-                android:id="@+id/text_movie_genres"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_normal"
-                android:layout_marginEnd="@dimen/margin_normal"
-                android:layout_marginBottom="@dimen/margin_normal"
-                app:movieGenres="@{movie.genreStrings}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/text_movie_title"
-                app:layout_constraintTop_toBottomOf="@id/text_movie_title"
-                tools:text="12, 32, 22"/>
-
             <TextView
                 android:id="@+id/text_movie_release_date"
                 android:layout_width="0dp"
@@ -77,8 +60,20 @@
                 android:text="@{movie.releaseDate}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/text_movie_title"
-                app:layout_constraintTop_toBottomOf="@id/text_movie_genres"
+                app:layout_constraintTop_toBottomOf="@id/text_movie_title"
                 tools:text="2019-06-05" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_movie_genre_tags"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_normal"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/spacing_micro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/text_movie_title"
+                app:layout_constraintTop_toBottomOf="@id/text_movie_release_date"
+                tools:listitem="@layout/list_item_genre_tag" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

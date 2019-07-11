@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="com.chunchiehliang.kotlin.demo2.ui.movie.MovieViewModel" />
@@ -19,27 +21,31 @@
             android:id="@+id/recycler_movie_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:listData="@{viewModel.movieList}"
+            android:clipToPadding="false"
+            android:paddingBottom="?actionBarSize"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:listData="@{viewModel.movieList}"
             tools:listitem="@layout/list_item_movie" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
             android:layout_gravity="bottom"
-            app:backgroundTint="@color/white_90"
+            style="@style/Widget.BottomAppBar"
+            app:elevation="6dp"
             app:fabAlignmentMode="end"
             app:hideOnScroll="true"
             app:navigationIcon="@drawable/ic_launcher_foreground" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_filter"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/filter"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
             app:fabSize="auto"
             app:layout_anchor="@id/bottom_app_bar"
             app:srcCompat="@drawable/ic_filter" />

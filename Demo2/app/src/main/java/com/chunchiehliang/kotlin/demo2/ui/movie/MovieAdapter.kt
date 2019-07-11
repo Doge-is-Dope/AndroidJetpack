@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.demo2.R
 import com.chunchiehliang.kotlin.demo2.databinding.ListItemMovieBinding
 import com.chunchiehliang.kotlin.demo2.model.Movie
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MovieAdapter(val onClickListener: MovieListener) : ListAdapter<Movie, MovieAdapter.MovieItemViewHolder>(DiffCallback) {
 
