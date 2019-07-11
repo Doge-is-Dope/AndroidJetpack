@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.forEach
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -61,7 +62,6 @@ class MovieFragment : Fragment() {
 
 //           this.findNavController().navigate(R.id.action_movieFragment_to_testFragment)
         }
-
         return binding.root
     }
 

@@ -22,19 +22,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
+            android:orientation="vertical"
             android:paddingBottom="?actionBarSize"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:listData="@{viewModel.movieList}"
             tools:listitem="@layout/list_item_movie" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
+            style="@style/Widget.BottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:layout_gravity="bottom"
-            style="@style/Widget.BottomAppBar"
             app:elevation="6dp"
             app:fabAlignmentMode="end"
             app:hideOnScroll="true"
