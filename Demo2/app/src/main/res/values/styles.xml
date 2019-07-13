@@ -58,6 +58,11 @@
         <item name="android:fontFamily">@font/work_sans</item>
     </style>
 
+
+    <style name="TextAppearance.Demo.MovieTitle" parent="@style/TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/work_sans</item>
+    </style>
+
     <style name="TextAppearance.Demo.Tag" parent="@style/TextAppearance.Demo.ListSecondary" />
 
     <style name="TextAppearance.Demo.Body" parent="@style/TextAppearance.AppCompat.Body1">

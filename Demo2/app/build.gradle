@@ -43,6 +43,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
     implementation "com.google.android.material:material:$version_material_design"
+    implementation 'com.google.android:flexbox:1.1.0'
 
     // Android KTX
     implementation "androidx.core:core-ktx:$version_core"

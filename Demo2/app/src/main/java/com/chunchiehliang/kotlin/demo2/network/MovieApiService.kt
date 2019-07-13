@@ -1,14 +1,13 @@
 package com.chunchiehliang.kotlin.demo2.network
 
 import com.chunchiehliang.kotlin.demo2.model.GenreResponse
-import com.chunchiehliang.kotlin.demo2.model.Movie
 import com.chunchiehliang.kotlin.demo2.model.MovieResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.themoviedb.org/3/"
@@ -33,9 +32,16 @@ interface MovieApiService {
 
     @GET("genre/movie/list")
     suspend fun getGenres(
-        @Query("api_key")  apiKey: String,
+        @Query("api_key") apiKey: String,
         @Query("language") language: String
-    ):GenreResponse
+    ): GenreResponse
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovie(
+        @Path("movie_id") id: Int,
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String
+    )
 }
 
 object MovieApi {

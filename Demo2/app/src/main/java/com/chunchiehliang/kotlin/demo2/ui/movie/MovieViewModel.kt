@@ -59,6 +59,8 @@ class MovieViewModel : ViewModel() {
             try {
                 _status.value = MovieApiStatus.LOADING
 
+                Timber.d("Loading...")
+
                 val apiKey = BuildConfig.TMDB_API_KEY
 
                 // Get all the genres
@@ -69,20 +71,20 @@ class MovieViewModel : ViewModel() {
                     MovieApi.retrofitService.getNowPlayingMovies(apiKey = apiKey, language = "en-US", page = 1).movies
 
                 for (movie in movies) {
-                    val movieGenreList = mutableListOf<String>()
+                    val movieGenreList = mutableListOf<Genre>()
 
                     Timber.d("Movie genreIds: ${movie.genreIds}")
 
                     // Convert the genre list to a map
                     val genreMap = _genreList.value!!.map { genre ->
-                        genre.id to genre.name
+                        genre.id to genre
                     }.toMap()
 
                     for (genreId in movie.genreIds) {
                         genreMap[genreId]?.let { movieGenreList.add(it) }
                     }
-                    movie.genreStrings = movieGenreList
-                    Timber.d("Movie genres: ${movie.genreStrings}")
+                    movie.genres = movieGenreList
+                    Timber.d("Movie genres: ${movie.genres}")
                 }
 
                 _movieList.value = movies
@@ -91,6 +93,7 @@ class MovieViewModel : ViewModel() {
 
             } catch (e: Exception) {
                 _status.value = MovieApiStatus.ERROR
+                Timber.e("Error: ${e.message}")
             }
         }
     }
