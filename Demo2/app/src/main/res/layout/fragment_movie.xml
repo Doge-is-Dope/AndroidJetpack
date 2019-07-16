@@ -17,6 +17,28 @@
 
         <include layout="@layout/include_appbar" />
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/placeholder_movie_item" />
+
+                <include layout="@layout/placeholder_movie_item" />
+
+                <include layout="@layout/placeholder_movie_item" />
+
+                <include layout="@layout/placeholder_movie_item" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movie_list"
             android:layout_width="match_parent"
@@ -28,6 +50,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:listData="@{viewModel.movieList}"
             tools:listitem="@layout/list_item_movie" />
+
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"

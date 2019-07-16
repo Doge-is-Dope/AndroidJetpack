@@ -4,6 +4,8 @@
     <color name="status_bar_light">#33ffffff</color> <!-- 20% white -->
     <color name="status_bar_dark">#000000</color>
 
+    <color name="shimmer_placeholder_color">@color/light_grey</color>
+
     <color name="colorPrimary">#b085f5</color>
     <color name="colorPrimaryDark">#7f46e2</color>
     <color name="colorAccent">#b085f5</color>

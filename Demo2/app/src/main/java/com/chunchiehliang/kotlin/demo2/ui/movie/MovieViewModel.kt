@@ -46,10 +46,6 @@ class MovieViewModel : ViewModel() {
     }
 
     init {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
-
         getNowPlayingMovies()
     }
 
@@ -60,6 +56,9 @@ class MovieViewModel : ViewModel() {
                 _status.value = MovieApiStatus.LOADING
 
                 Timber.d("Loading...")
+
+
+//                delay(3_000) // Test Shimmer
 
                 val apiKey = BuildConfig.TMDB_API_KEY
 

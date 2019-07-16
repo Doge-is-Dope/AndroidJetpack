@@ -15,6 +15,7 @@ import com.chunchiehliang.kotlin.demo2.model.Genre
 import com.chunchiehliang.kotlin.demo2.model.Movie
 import com.chunchiehliang.kotlin.demo2.ui.movie.GenreAdapter
 import com.chunchiehliang.kotlin.demo2.ui.movie.MovieAdapter
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import timber.log.Timber
@@ -24,7 +25,6 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
     val adapter = recyclerView.adapter as MovieAdapter
     adapter.submitList(data)
 }
-
 
 @BindingAdapter("movieGenres")
 fun TextView.movieGenres(genres: List<String>?) {
