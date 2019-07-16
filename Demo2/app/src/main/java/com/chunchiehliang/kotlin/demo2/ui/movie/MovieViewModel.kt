@@ -7,10 +7,7 @@ import com.chunchiehliang.kotlin.demo2.BuildConfig
 import com.chunchiehliang.kotlin.demo2.model.Genre
 import com.chunchiehliang.kotlin.demo2.model.Movie
 import com.chunchiehliang.kotlin.demo2.network.MovieApi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import timber.log.Timber
 
 class MovieViewModel : ViewModel() {
@@ -58,7 +55,7 @@ class MovieViewModel : ViewModel() {
                 Timber.d("Loading...")
 
 
-//                delay(3_000) // Test Shimmer
+                // delay(3_000) // Test Shimmer
 
                 val apiKey = BuildConfig.TMDB_API_KEY
 

@@ -4,7 +4,6 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -44,30 +43,22 @@ class MovieFragment : Fragment() {
             }
         })
 
-        viewModel.status.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                when (it) {
-                    MovieViewModel.MovieApiStatus.LOADING -> {
-                        binding.shimmerContainer.startShimmer()
-                    }
-                    MovieViewModel.MovieApiStatus.DONE -> {
-                        binding.shimmerContainer.stopShimmer()
-                        binding.shimmerContainer.visibility = GONE
-                    }
-
-                    MovieViewModel.MovieApiStatus.ERROR -> {
-                        binding.shimmerContainer.startShimmer()
-                    }
-                }
-            }
-        })
-
         viewModel.navigateToMovieDetail.observe(this, Observer { movie ->
             movie?.let {
                 this.findNavController().navigate(
                     MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movie)
                 )
                 viewModel.onMovieDetailNavigated()
+            }
+        })
+
+        viewModel.status.observe(this, Observer {
+            if (it == MovieViewModel.MovieApiStatus.ERROR) {
+                Snackbar.make(
+                    activity!!.findViewById(android.R.id.content),
+                    getString(R.string.msg_connection_error),
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         })
 

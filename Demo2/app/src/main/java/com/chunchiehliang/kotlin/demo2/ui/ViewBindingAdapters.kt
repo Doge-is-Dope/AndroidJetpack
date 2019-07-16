@@ -2,6 +2,7 @@ package com.chunchiehliang.kotlin.demo2.ui
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -15,15 +16,32 @@ import com.chunchiehliang.kotlin.demo2.model.Genre
 import com.chunchiehliang.kotlin.demo2.model.Movie
 import com.chunchiehliang.kotlin.demo2.ui.movie.GenreAdapter
 import com.chunchiehliang.kotlin.demo2.ui.movie.MovieAdapter
+import com.chunchiehliang.kotlin.demo2.ui.movie.MovieViewModel.MovieApiStatus
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import timber.log.Timber
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
     val adapter = recyclerView.adapter as MovieAdapter
     adapter.submitList(data)
+}
+
+@BindingAdapter("movieApiStatus")
+fun bindStatus(shimmerContainer: ShimmerFrameLayout, status: MovieApiStatus?) {
+    when (status) {
+        MovieApiStatus.LOADING -> {
+            shimmerContainer.startShimmer()
+        }
+        MovieApiStatus.DONE -> {
+            shimmerContainer.stopShimmer()
+            shimmerContainer.visibility = View.GONE
+        }
+
+        MovieApiStatus.ERROR -> {
+            shimmerContainer.stopShimmer()
+            shimmerContainer.visibility = View.GONE
+        }
+    }
 }
 
 @BindingAdapter("movieGenres")

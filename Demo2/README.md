@@ -7,8 +7,8 @@
 ##### UI, Widgets
 - AndroidX
 - RecyclerView
-- Google Material Design
-- Facebook Shimmer
+- [Google Material Design](https://material.io/develop/android/)
+- [Facebook Shimmer](https://github.com/facebook/shimmer-android)
 
 ##### Architecture, Lifecycle, Persistence
 - Android Navigation 
@@ -22,12 +22,12 @@
 - Kotlin Coroutine
 
 ##### Internet, Http Connection, JSON Parsing
-- Square Retrofit
-- Square Moshi
-- Glide
+- [Square Retrofit](https://github.com/square/retrofit)
+- [Square Moshi](https://github.com/square/moshi)
+- [Glide](https://github.com/bumptech/glide)
 
 ##### Logging
-- Timber
+- [JakeWharton Timber](https://github.com/JakeWharton/timber)
 
   
 
