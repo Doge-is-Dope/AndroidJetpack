@@ -1,0 +1,27 @@
+# Now Playing Movies
+
+#### Taget API: 29 (Android Q)
+
+
+#### UI, Widgets
+- AndroidX
+- Google Material Design
+
+#### Architecture, Lifecycle, Persistence
+- Android Navigation 
+- Android Data Binding
+- Android Lifecycle
+- Android ViewModel
+- Android LiveData
+- Android Room
+
+#### Async
+- Kotlin Coroutine
+
+#### Internet, Http Connection, JSON Parsing
+- Square Retrofit
+- Square Moshi
+- Glide
+  
+
+ 
