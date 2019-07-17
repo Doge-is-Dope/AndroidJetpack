@@ -1,14 +1,16 @@
 package com.chunchiehliang.kotlin.demo2.network
 
-import com.chunchiehliang.kotlin.demo2.domain.Genre
+import android.os.Parcelable
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
 
 /**
  * VideoHolder holds a list of Movies.
  */
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class NetworkMovieContainer(
     val results: List<NetworkMovie>,
@@ -17,11 +19,12 @@ data class NetworkMovieContainer(
     val totalResults: Int,
     @Json(name = "total_pages")
     val totalPages: Int
-)
+):Parcelable
 
 /**
  * Movie represents a current movie in a theater
  */
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class NetworkMovie(
     @Json(name = "vote_count")
@@ -65,20 +68,21 @@ data class NetworkMovie(
 
     @Json(name = "release_date")
     val releaseDate: String
-)
+):Parcelable
 
 /**
  * Convert Network results to database objects
  */
-//fun NetworkMovieContainer.asDomainModel(): List<Movie> {
-//    return results.map {
-//        Movie(
-//            id = it.id,
-//            title = it.title,
-//            releaseDate = it.releaseDate,
-//            posterPath = it.posterPath,
-//            backDropPath = it.backDropPath,
-//            genreIds = it.genreIds,
-//            overview = it.overview)
-//    }
-//}
+fun NetworkMovieContainer.asDomainModel(): List<Movie> {
+    return results.map {
+        Movie(
+            id = it.id,
+            title = it.title,
+            releaseDate = it.releaseDate,
+            posterPath = it.posterPath,
+            backDropPath = it.backDropPath,
+            genreIds = it.genreIds,
+            overview = it.overview
+        )
+    }
+}

@@ -6,13 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 
-class MovieDetailViewModel (selectedMovie: Movie, app: Application) : AndroidViewModel(app) {
+class MovieDetailViewModel (movieId: Long, app: Application) : AndroidViewModel(app) {
 
-    private val _selectedMovie = MutableLiveData<Movie>()
-    val selectedMovie: LiveData<Movie>
-        get() = _selectedMovie
+    private val _selectedMovieId = MutableLiveData<Long>()
+    val selectedMovieId: LiveData<Long>
+        get() = _selectedMovieId
 
     init {
-        _selectedMovie.value = selectedMovie
+        _selectedMovieId.value = movieId
     }
 }

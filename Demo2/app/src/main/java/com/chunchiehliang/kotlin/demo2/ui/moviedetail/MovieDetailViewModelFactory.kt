@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 
 class DetailViewModelFactory(
-    private val movie: Movie,
+    private val movieId: Long,
     private val application: Application
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MovieDetailViewModel::class.java)) {
-            return MovieDetailViewModel(movie, application) as T
+            return MovieDetailViewModel(movieId, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

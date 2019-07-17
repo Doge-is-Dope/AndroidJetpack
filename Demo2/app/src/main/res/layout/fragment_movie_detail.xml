@@ -16,31 +16,31 @@
         tools:context=".ui.moviedetail.MovieDetailFragment">
 
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--<com.google.android.material.appbar.AppBarLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:contentScrim="?colorSurface"
-                app:expandedTitleGravity="top"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            <!--<com.google.android.material.appbar.CollapsingToolbarLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:contentScrim="?colorSurface"-->
+                <!--app:expandedTitleGravity="top"-->
+                <!--app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">-->
 
-                <ImageView
-                    android:id="@+id/image_movie_backdrop"
-                    android:layout_width="match_parent"
-                    android:layout_height="240dp"
-                    android:scaleType="centerCrop"
-                    app:backDropImageUrl="@{viewModel.selectedMovie.backDropPath}" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/image_movie_backdrop"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="240dp"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--app:backDropImageUrl="@{viewModel.selectedMovie.backDropPath}" />-->
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/AppBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin" />
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
+                <!--<com.google.android.material.appbar.MaterialToolbar-->
+                    <!--android:id="@+id/AppBar"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="?attr/actionBarSize"-->
+                    <!--app:layout_collapseMode="pin" />-->
+            <!--</com.google.android.material.appbar.CollapsingToolbarLayout>-->
+        <!--</com.google.android.material.appbar.AppBarLayout>-->
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -57,28 +57,11 @@
                     android:id="@+id/text_movie_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.selectedMovie.title}"
+                    android:text="@{String.valueOf(viewModel.selectedMovieId)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="123" />
-
-                <TextView
-                    android:id="@+id/text_movie_release_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.selectedMovie.releaseDate}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_movie_title" />
-
-                <TextView
-                    android:id="@+id/text_movie_genres"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_movie_release_date" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

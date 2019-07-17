@@ -25,9 +25,10 @@
         android:label="fragment_movie_detail"
         tools:layout="@layout/fragment_movie_detail">
 
+        <!--todo: moviedetail-->
         <argument
-            android:name="selectedMovie"
-            app:argType="com.chunchiehliang.kotlin.demo2.domain.Movie" />
+            android:name="selectedMovieId"
+            app:argType="long" />
     </fragment>
 
     <fragment

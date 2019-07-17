@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.demo2.R
 import com.chunchiehliang.kotlin.demo2.databinding.FragmentMovieBinding
 import com.google.android.material.snackbar.Snackbar
+import timber.log.Timber
 
 
 class MovieFragment : Fragment() {
@@ -27,12 +28,12 @@ class MovieFragment : Fragment() {
             inflater,
             R.layout.fragment_movie, container, false
         )
-
+        Timber.d("MovieFragment")
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         val adapter = MovieAdapter(MovieAdapter.MovieListener { movie ->
-            viewModel.onMovieClicked(movie)
+            viewModel.onMovieClicked(movie.id)
         })
         binding.recyclerMovieList.adapter = adapter
         binding.recyclerMovieList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.margin_normal)).toInt()))
@@ -43,10 +44,10 @@ class MovieFragment : Fragment() {
             }
         })
 
-        viewModel.navigateToMovieDetail.observe(this, Observer { movie ->
-            movie?.let {
+        viewModel.navigateToMovieDetail.observe(this, Observer { movieId ->
+            movieId?.let {
                 this.findNavController().navigate(
-                    MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movie)
+                    MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
                 )
                 viewModel.onMovieDetailNavigated()
             }

@@ -7,6 +7,7 @@ import com.chunchiehliang.kotlin.demo2.BuildConfig
 import com.chunchiehliang.kotlin.demo2.domain.Genre
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.chunchiehliang.kotlin.demo2.network.MovieApi
+import com.chunchiehliang.kotlin.demo2.network.asDomainModel
 import kotlinx.coroutines.*
 import timber.log.Timber
 
@@ -30,12 +31,12 @@ class MovieViewModel : ViewModel() {
     val genreList: LiveData<List<Genre>>
         get() = _genreList
 
-    private val _navigateToMovieDetail = MutableLiveData<Movie>()
-    val navigateToMovieDetail: LiveData<Movie>
+    private val _navigateToMovieDetail = MutableLiveData<Long>()
+    val navigateToMovieDetail: LiveData<Long>
         get() = _navigateToMovieDetail
 
-    fun onMovieClicked(movie: Movie) {
-        _navigateToMovieDetail.value = movie
+    fun onMovieClicked(movieId: Long) {
+        _navigateToMovieDetail.value = movieId
     }
 
     fun onMovieDetailNavigated() {
@@ -43,6 +44,7 @@ class MovieViewModel : ViewModel() {
     }
 
     init {
+        Timber.d("MovieViewModel")
         getNowPlayingMovies()
     }
 
@@ -63,9 +65,10 @@ class MovieViewModel : ViewModel() {
                 _genreList.value = MovieApi.retrofitService.getGenres(apiKey = apiKey, language = "en-US").genres
 
                 // Get the now playing movies
-                val movies =
-                    MovieApi.retrofitService.getNowPlayingMovies(apiKey = apiKey, language = "en-US", page = 1).movies
+                val movieContainer =
+                    MovieApi.retrofitService.getNowPlayingMovies(apiKey = apiKey, language = "en-US", page = 1)
 
+                val movies = movieContainer.asDomainModel()
                 for (movie in movies) {
                     val movieGenreList = mutableListOf<Genre>()
 
@@ -83,7 +86,7 @@ class MovieViewModel : ViewModel() {
                     Timber.d("Movie genres: ${movie.genres}")
                 }
 
-                _movieList.value = movies
+                _movieList.postValue(movies)
 
                 _status.value = MovieApiStatus.DONE
 

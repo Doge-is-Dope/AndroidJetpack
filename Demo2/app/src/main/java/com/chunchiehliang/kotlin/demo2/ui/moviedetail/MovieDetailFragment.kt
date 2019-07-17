@@ -17,7 +17,8 @@ class MovieDetailFragment : Fragment() {
         val application = requireNotNull(activity).application
         val binding = FragmentMovieDetailBinding.inflate(inflater)
 
-        val movie = MovieDetailFragmentArgs.fromBundle(arguments!!).selectedMovie
+
+        val movie = MovieDetailFragmentArgs.fromBundle(arguments!!).selectedMovieId
 
         val viewModelFactory = DetailViewModelFactory(movie, application)
 
