@@ -1,7 +1,7 @@
 package com.chunchiehliang.kotlin.demo2.network
 
-import com.chunchiehliang.kotlin.demo2.model.GenreResponse
-import com.chunchiehliang.kotlin.demo2.model.MovieResponse
+import com.chunchiehliang.kotlin.demo2.domain.GenreResponse
+import com.chunchiehliang.kotlin.demo2.domain.MovieResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

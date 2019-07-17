@@ -1,6 +1,7 @@
-package com.chunchiehliang.kotlin.demo2.model
+package com.chunchiehliang.kotlin.demo2.domain
 
 import android.os.Parcelable
+import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

@@ -3,7 +3,7 @@ package com.chunchiehliang.kotlin.demo2.ui.moviedetail
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.chunchiehliang.kotlin.demo2.model.Movie
+import com.chunchiehliang.kotlin.demo2.domain.Movie
 
 class DetailViewModelFactory(
     private val movie: Movie,

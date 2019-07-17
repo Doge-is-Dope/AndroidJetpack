@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.chunchiehliang.kotlin.demo2.model.Movie
+import com.chunchiehliang.kotlin.demo2.domain.Movie
 
 class MovieDetailViewModel (selectedMovie: Movie, app: Application) : AndroidViewModel(app) {
 

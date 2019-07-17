@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.chunchiehliang.kotlin.demo2.R
-import com.chunchiehliang.kotlin.demo2.model.Genre
-import com.chunchiehliang.kotlin.demo2.model.Movie
+import com.chunchiehliang.kotlin.demo2.domain.Genre
+import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.chunchiehliang.kotlin.demo2.ui.movie.GenreAdapter
 import com.chunchiehliang.kotlin.demo2.ui.movie.MovieAdapter
 import com.chunchiehliang.kotlin.demo2.ui.movie.MovieViewModel.MovieApiStatus

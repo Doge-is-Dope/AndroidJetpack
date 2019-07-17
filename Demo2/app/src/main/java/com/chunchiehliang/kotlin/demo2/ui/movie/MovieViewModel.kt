@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.chunchiehliang.kotlin.demo2.BuildConfig
-import com.chunchiehliang.kotlin.demo2.model.Genre
-import com.chunchiehliang.kotlin.demo2.model.Movie
+import com.chunchiehliang.kotlin.demo2.domain.Genre
+import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.chunchiehliang.kotlin.demo2.network.MovieApi
 import kotlinx.coroutines.*
 import timber.log.Timber

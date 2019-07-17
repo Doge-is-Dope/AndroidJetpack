@@ -27,7 +27,7 @@
 
         <argument
             android:name="selectedMovie"
-            app:argType="com.chunchiehliang.kotlin.demo2.model.Movie" />
+            app:argType="com.chunchiehliang.kotlin.demo2.domain.Movie" />
     </fragment>
 
     <fragment
