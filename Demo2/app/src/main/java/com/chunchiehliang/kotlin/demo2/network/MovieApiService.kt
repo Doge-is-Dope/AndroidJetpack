@@ -1,6 +1,5 @@
 package com.chunchiehliang.kotlin.demo2.network
 
-import com.chunchiehliang.kotlin.demo2.domain.GenreResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -33,7 +32,7 @@ interface MovieApiService {
     suspend fun getGenres(
         @Query("api_key") apiKey: String,
         @Query("language") language: String
-    ): GenreResponse
+    ): NetworkGenreContainer
 
     @GET("movie/{movie_id}")
     suspend fun getMovie(

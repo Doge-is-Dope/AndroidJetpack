@@ -1,6 +1,7 @@
 package com.chunchiehliang.kotlin.demo2.network
 
 import android.os.Parcelable
+import com.chunchiehliang.kotlin.demo2.domain.Genre
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -19,7 +20,7 @@ data class NetworkMovieContainer(
     val totalResults: Int,
     @Json(name = "total_pages")
     val totalPages: Int
-):Parcelable
+) : Parcelable
 
 /**
  * Movie represents a current movie in a theater
@@ -68,7 +69,7 @@ data class NetworkMovie(
 
     @Json(name = "release_date")
     val releaseDate: String
-):Parcelable
+) : Parcelable
 
 /**
  * Convert Network results to database objects
@@ -83,6 +84,27 @@ fun NetworkMovieContainer.asDomainModel(): List<Movie> {
             backDropPath = it.backDropPath,
             genreIds = it.genreIds,
             overview = it.overview
+        )
+    }
+}
+
+
+@Parcelize
+@JsonClass(generateAdapter = true)
+data class NetworkGenreContainer(val genres: List<NetworkGenre>) : Parcelable
+
+@Parcelize
+@JsonClass(generateAdapter = true)
+data class NetworkGenre(val id: Int, val name: String) : Parcelable
+
+/**
+ * Convert Network results to database objects
+ */
+fun NetworkGenreContainer.asDomainModel(): List<Genre> {
+    return genres.map {
+        Genre(
+            id = it.id,
+            name = it.name
         )
     }
 }

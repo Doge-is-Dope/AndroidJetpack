@@ -34,7 +34,7 @@
                 android:contentDescription="@string/image_description_movie"
                 android:scaleType="centerCrop"
                 app:posterImageUrl="@{movie.posterPath}"
-                tools:src="@drawable/ic_launcher_background" />
+                tools:src="@color/light_grey" />
 
         </androidx.cardview.widget.CardView>
 

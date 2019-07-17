@@ -62,7 +62,8 @@ class MovieViewModel : ViewModel() {
                 val apiKey = BuildConfig.TMDB_API_KEY
 
                 // Get all the genres
-                _genreList.value = MovieApi.retrofitService.getGenres(apiKey = apiKey, language = "en-US").genres
+                val genreList = MovieApi.retrofitService.getGenres(apiKey = apiKey, language = "en-US")
+                _genreList.postValue(genreList.asDomainModel())
 
                 // Get the now playing movies
                 val movieContainer =
@@ -71,8 +72,6 @@ class MovieViewModel : ViewModel() {
                 val movies = movieContainer.asDomainModel()
                 for (movie in movies) {
                     val movieGenreList = mutableListOf<Genre>()
-
-                    Timber.d("Movie genreIds: ${movie.genreIds}")
 
                     // Convert the genre list to a map
                     val genreMap = _genreList.value!!.map { genre ->
@@ -83,7 +82,6 @@ class MovieViewModel : ViewModel() {
                         genreMap[genreId]?.let { movieGenreList.add(it) }
                     }
                     movie.genres = movieGenreList
-                    Timber.d("Movie genres: ${movie.genres}")
                 }
 
                 _movieList.postValue(movies)
@@ -103,11 +101,11 @@ class MovieViewModel : ViewModel() {
                 _status.value = MovieApiStatus.LOADING
 
                 val apiKey = BuildConfig.TMDB_API_KEY
-                val result = MovieApi.retrofitService.getGenres(apiKey = apiKey, language = "en-US")
+                val result = MovieApi.retrofitService.getGenres(apiKey = apiKey, language = "en-US").asDomainModel()
 
                 _status.value = MovieApiStatus.DONE
 
-                _genreList.value = result.genres
+                _genreList.postValue(result)
 
                 Timber.d("Done! Genre size: ${_genreList.value?.size}")
 
