@@ -1,6 +1,8 @@
 package com.chunchiehliang.kotlin.demo2.network
 
 import android.os.Parcelable
+import com.chunchiehliang.kotlin.demo2.database.DatabaseGenre
+import com.chunchiehliang.kotlin.demo2.database.DatabaseMovie
 import com.chunchiehliang.kotlin.demo2.domain.Genre
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.squareup.moshi.Json
@@ -88,6 +90,19 @@ fun NetworkMovieContainer.asDomainModel(): List<Movie> {
     }
 }
 
+fun NetworkMovieContainer.asDatabaseModel(): Array<DatabaseMovie> {
+    return results.map {
+        DatabaseMovie(
+            id = it.id,
+            title = it.title,
+            releaseDate = it.releaseDate,
+            posterPath = it.posterPath,
+            backDropPath = it.backDropPath,
+            genreIds = it.genreIds,
+            overview = it.overview
+        )
+    }.toTypedArray()
+}
 
 @Parcelize
 @JsonClass(generateAdapter = true)
@@ -98,7 +113,7 @@ data class NetworkGenreContainer(val genres: List<NetworkGenre>) : Parcelable
 data class NetworkGenre(val id: Int, val name: String) : Parcelable
 
 /**
- * Convert Network results to database objects
+ * Convert Network results to domain objects
  */
 fun NetworkGenreContainer.asDomainModel(): List<Genre> {
     return genres.map {
@@ -107,4 +122,13 @@ fun NetworkGenreContainer.asDomainModel(): List<Genre> {
             name = it.name
         )
     }
+}
+
+fun NetworkGenreContainer.asDatabaseModel(): Array<DatabaseGenre> {
+    return genres.map {
+        DatabaseGenre(
+            id = it.id,
+            name = it.name
+        )
+    }.toTypedArray()
 }

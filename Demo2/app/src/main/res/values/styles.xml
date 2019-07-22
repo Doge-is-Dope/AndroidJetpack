@@ -3,6 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">?colorPrimary</item>
         <item name="toolbarStyle">@style/Widget.Toolbar</item>

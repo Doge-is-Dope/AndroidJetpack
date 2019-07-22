@@ -1,12 +1,9 @@
 package com.chunchiehliang.kotlin.demo2.ui.moviedetail
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.chunchiehliang.kotlin.demo2.domain.Movie
+import androidx.lifecycle.*
 
-class MovieDetailViewModel (movieId: Long, app: Application) : AndroidViewModel(app) {
+class MovieDetailViewModel(movieId: Long, app: Application) : AndroidViewModel(app) {
 
     private val _selectedMovieId = MutableLiveData<Long>()
     val selectedMovieId: LiveData<Long>
@@ -14,5 +11,16 @@ class MovieDetailViewModel (movieId: Long, app: Application) : AndroidViewModel(
 
     init {
         _selectedMovieId.value = movieId
+    }
+
+
+    class Factory(private val movieId: Long, private val application: Application) : ViewModelProvider.Factory {
+        @Suppress("unchecked_cast")
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(MovieDetailViewModel::class.java)) {
+                return MovieDetailViewModel(movieId, application) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
     }
 }

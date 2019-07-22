@@ -20,7 +20,7 @@ class MovieDetailFragment : Fragment() {
 
         val movie = MovieDetailFragmentArgs.fromBundle(arguments!!).selectedMovieId
 
-        val viewModelFactory = DetailViewModelFactory(movie, application)
+        val viewModelFactory = MovieDetailViewModel.Factory(movie, application)
 
         binding.viewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieDetailViewModel::class.java)
         binding.lifecycleOwner = this
