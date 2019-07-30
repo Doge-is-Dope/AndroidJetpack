@@ -1,4 +1,4 @@
-package com.chunchiehliang.kotlin.demo2.ui.moviedetail
+package com.chunchiehliang.kotlin.demo2.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*

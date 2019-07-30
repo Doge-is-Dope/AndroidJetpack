@@ -30,10 +30,6 @@ android {
     dataBinding {
         enabled = true
     }
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
-    }
     androidExtensions {
         experimental = true
     }
@@ -67,6 +63,9 @@ dependencies {
     // Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
+
+    // WorkManager
+    implementation "android.arch.work:work-runtime-ktx:$version_work"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit: $version_retrofit"

@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">?colorPrimary</item>
-        <item name="toolbarStyle">@style/Widget.Toolbar</item>
+        <item name="android:fontFamily">@font/work_sans</item>
         <!--<item name="android:statusBarColor">@color/status_bar</item>-->
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
@@ -17,20 +17,6 @@
     </style>
 
     <style name="AppTheme.LightNav" parent="AppTheme.NoActionBar" />
-
-    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.AppCompat.DayNight" />
-
-    <style name="Widget.AppBar" parent="@style/Widget.Design.AppBarLayout">
-        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.ActionBar</item>
-        <item name="android:background">@color/white</item>
-        <item name="android:elevation">8dp</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="titleTextAppearance">@style/TextAppearance.Demo.ToolbarTitle</item>
-        <item name="popupTheme">@style/AppTheme.PopupTheme</item>
-    </style>
 
 
     <style name="Widget.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
@@ -45,6 +31,10 @@
         <item name="android:textAppearance">@style/TextAppearance.Demo.Tag</item>
     </style>
 
+    <style name="Widget.Demo.AppBar" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
+        <item name="android:fontFamily">@font/work_sans</item>
+    </style>
+
     <style name="Widget.Demo.Tag.Inline">
         <item name="android:drawablePadding">@dimen/spacing_micro</item>
         <item name="android:drawableStart">@drawable/tag_dot</item>
@@ -55,13 +45,14 @@
         <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
     </style>
 
-    <style name="TextAppearance.Demo.ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:fontFamily">@font/work_sans</item>
+    <style name="TextAppearance.ToolbarTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">20sp</item>
     </style>
 
 
-    <style name="TextAppearance.Demo.MovieTitle" parent="@style/TextAppearance.AppCompat.Title">
-        <item name="android:fontFamily">@font/work_sans</item>
+    <style name="TextAppearance.MovieTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">21sp</item>
     </style>
 
     <style name="TextAppearance.Demo.Tag" parent="@style/TextAppearance.Demo.ListSecondary" />

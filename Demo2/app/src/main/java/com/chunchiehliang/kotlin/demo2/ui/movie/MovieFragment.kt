@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.demo2.R
 import com.chunchiehliang.kotlin.demo2.databinding.FragmentMovieBinding
+import com.chunchiehliang.kotlin.demo2.viewmodel.MovieViewModel
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 
@@ -20,7 +21,9 @@ import timber.log.Timber
 class MovieFragment : Fragment() {
 
     private val viewModel: MovieViewModel by lazy {
-        ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        val activity = requireNotNull(this.activity) { "You can only access the viewModel after onActivityCreated()" }
+        ViewModelProviders.of(this, MovieViewModel.Factory(activity.application))
+            .get(MovieViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,7 +39,14 @@ class MovieFragment : Fragment() {
             viewModel.onMovieClicked(movie.id)
         })
         binding.recyclerMovieList.adapter = adapter
-        binding.recyclerMovieList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.margin_normal)).toInt()))
+        binding.recyclerMovieList.hasFixedSize()
+//        binding.recyclerMovieList.addItemDecoration(MarginItemDecoration((resources.getDimension(R.dimen.margin_normal)).toInt()))
+
+        viewModel.genreList.observe(viewLifecycleOwner, Observer {
+            it?.let {
+//                Timber.d("genre list:  $it")
+            }
+        })
 
         viewModel.movieList.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -44,7 +54,7 @@ class MovieFragment : Fragment() {
             }
         })
 
-        viewModel.navigateToMovieDetail.observe(this, Observer { movieId ->
+        viewModel.navigateToMovieDetail.observe(viewLifecycleOwner, Observer { movieId ->
             movieId?.let {
                 this.findNavController().navigate(
                     MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
@@ -53,7 +63,7 @@ class MovieFragment : Fragment() {
             }
         })
 
-        viewModel.status.observe(this, Observer {
+        viewModel.status.observe(viewLifecycleOwner, Observer {
             if (it == MovieViewModel.MovieApiStatus.ERROR) {
                 Snackbar.make(
                     activity!!.findViewById(android.R.id.content),
@@ -63,13 +73,6 @@ class MovieFragment : Fragment() {
             }
         })
 
-        binding.fabFilter.setOnClickListener {
-            Snackbar.make(binding.coordinatorLayout, "clicked", Snackbar.LENGTH_SHORT)
-                .setAnchorView(binding.fabFilter)
-                .show()
-
-//           this.findNavController().navigate(R.id.action_movieFragment_to_testFragment)
-        }
         return binding.root
     }
 

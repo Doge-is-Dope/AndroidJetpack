@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.chunchiehliang.kotlin.demo2.ui.movie.MovieFragment"
-        android:label="MovieFragment"
+        android:label="@string/text_in_theater_now"
         tools:layout="@layout/fragment_movie">
 
         <action

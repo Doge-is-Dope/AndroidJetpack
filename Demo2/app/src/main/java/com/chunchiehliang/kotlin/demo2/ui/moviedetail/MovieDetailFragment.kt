@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.chunchiehliang.kotlin.demo2.databinding.FragmentMovieDetailBinding
+import com.chunchiehliang.kotlin.demo2.viewmodel.MovieDetailViewModel
 
 
 class MovieDetailFragment : Fragment() {
@@ -27,6 +28,4 @@ class MovieDetailFragment : Fragment() {
 
         return binding.root
     }
-
-
 }

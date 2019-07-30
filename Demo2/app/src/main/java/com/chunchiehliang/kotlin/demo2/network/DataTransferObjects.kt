@@ -49,7 +49,7 @@ data class NetworkMovie(
     val popularity: Double,
 
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
 
     @Json(name = "original_language")
     val originalLanguage: String,
@@ -81,6 +81,7 @@ fun NetworkMovieContainer.asDomainModel(): List<Movie> {
         Movie(
             id = it.id,
             title = it.title,
+            popularity = it.popularity,
             releaseDate = it.releaseDate,
             posterPath = it.posterPath,
             backDropPath = it.backDropPath,
@@ -95,6 +96,7 @@ fun NetworkMovieContainer.asDatabaseModel(): Array<DatabaseMovie> {
         DatabaseMovie(
             id = it.id,
             title = it.title,
+            popularity = it.popularity,
             releaseDate = it.releaseDate,
             posterPath = it.posterPath,
             backDropPath = it.backDropPath,

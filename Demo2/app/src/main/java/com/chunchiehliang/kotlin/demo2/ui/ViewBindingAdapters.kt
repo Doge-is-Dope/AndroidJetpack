@@ -16,7 +16,7 @@ import com.chunchiehliang.kotlin.demo2.domain.Genre
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.chunchiehliang.kotlin.demo2.ui.movie.GenreAdapter
 import com.chunchiehliang.kotlin.demo2.ui.movie.MovieAdapter
-import com.chunchiehliang.kotlin.demo2.ui.movie.MovieViewModel.MovieApiStatus
+import com.chunchiehliang.kotlin.demo2.viewmodel.MovieViewModel.MovieApiStatus
 import com.facebook.shimmer.ShimmerFrameLayout
 import timber.log.Timber
 
@@ -44,6 +44,14 @@ fun bindStatus(shimmerContainer: ShimmerFrameLayout, status: MovieApiStatus?) {
     }
 }
 
+@BindingAdapter("shimmerStopIfNotNull")
+fun shimmerStopIfNotNull(shimmerContainer: ShimmerFrameLayout, data: List<Movie>?) {
+    if (data != null && data.isNotEmpty()) {
+        shimmerContainer.stopShimmer()
+        shimmerContainer.visibility = View.GONE
+    }
+}
+
 @BindingAdapter("movieGenres")
 fun TextView.movieGenres(genres: List<String>?) {
     genres?.let {
@@ -55,7 +63,7 @@ fun TextView.movieGenres(genres: List<String>?) {
 fun bindGenreList(recyclerView: RecyclerView, data: List<Genre>?) {
     recyclerView.adapter = (recyclerView.adapter as? GenreAdapter ?: GenreAdapter())
         .apply {
-            Timber.d("$data")
+//            Timber.d("$data")
             genres = data ?: emptyList()
         }
 }

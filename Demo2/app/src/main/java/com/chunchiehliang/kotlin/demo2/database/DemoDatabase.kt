@@ -1,29 +1,15 @@
 package com.chunchiehliang.kotlin.demo2.database
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.room.*
-
-@Dao
-interface MovieDao {
-    @Query("select * from databasemovie")
-    fun getCurrentMovies(): LiveData<List<DatabaseMovie>>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg movies: DatabaseMovie)
-}
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.chunchiehliang.kotlin.demo2.database.dao.GenreDao
+import com.chunchiehliang.kotlin.demo2.database.dao.MovieDao
 
 
-@Dao
-interface GenreDao {
-    @Query("select * from databasegenre")
-    fun getGenres(): LiveData<List<DatabaseGenre>>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg videos: DatabaseGenre)
-}
-
-@Database(entities = [DatabaseMovie::class, DatabaseGenre::class], version = 1)
+@Database(entities = [DatabaseMovie::class, DatabaseGenre::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class DemoDatabase : RoomDatabase() {
     abstract val movieDao: MovieDao

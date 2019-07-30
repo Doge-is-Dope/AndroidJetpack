@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.chunchiehliang.kotlin.demo2.ui.movie.MovieViewModel" />
+            type="com.chunchiehliang.kotlin.demo2.viewmodel.MovieViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -15,15 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/include_appbar" />
-
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:movieApiStatus="@{viewModel.status}">
+            app:shimmerStopIfNotNull="@{viewModel.movieList}">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,25 +51,19 @@
             tools:listitem="@layout/list_item_movie" />
 
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
-            style="@style/Widget.BottomAppBar"
+        <fragment
+            android:id="@+id/filter_sheet"
+            android:name="com.chunchiehliang.kotlin.demo2.ui.TestFragment"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            app:elevation="6dp"
-            app:fabAlignmentMode="end"
-            app:hideOnScroll="true"
-            app:navigationIcon="@drawable/ic_launcher_foreground" />
+            android:layout_marginBottom="4dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+            app:behavior_skipCollapsed="true"
+            tools:layout="@layout/fragment_test" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_filter"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/filter"
-            app:fabSize="auto"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:srcCompat="@drawable/ic_filter" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

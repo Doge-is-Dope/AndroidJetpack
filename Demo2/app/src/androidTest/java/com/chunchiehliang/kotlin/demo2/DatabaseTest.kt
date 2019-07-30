@@ -6,11 +6,10 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.chunchiehliang.kotlin.demo2.database.DemoDatabase
-import com.chunchiehliang.kotlin.demo2.database.MovieDao
 import com.chunchiehliang.kotlin.demo2.database.asDomainModel
+import com.chunchiehliang.kotlin.demo2.database.dao.MovieDao
 import com.chunchiehliang.kotlin.demo2.domain.Movie
 import org.junit.After
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -48,7 +47,7 @@ class DatabaseTest {
     @Test
     @Throws(Exception::class)
     fun getMovies() {
-        val movieList : LiveData<List<Movie>> = Transformations.map(movieDao.getCurrentMovies()){
+        val movieList: LiveData<List<Movie>> = Transformations.map(movieDao.getCurrentMovies()) {
             it.asDomainModel()
         }
 

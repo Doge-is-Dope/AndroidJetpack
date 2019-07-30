@@ -13,17 +13,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingTop="@dimen/spacing_normal"
+        android:paddingBottom="@dimen/spacing_normal">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/margin_normal" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/margin_normal" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_movie_thumbnail"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_margin="@dimen/spacing_micro"
+            android:layout_height="180dp"
             app:cardCornerRadius="@dimen/spacing_normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="27:40"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/start_grid"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -43,12 +61,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
             android:text="@{movie.title}"
-            android:textAppearance="@style/TextAppearance.Demo.MovieTitle"
+            android:textAppearance="@style/TextAppearance.MovieTitle"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/end_grid"
             app:layout_constraintStart_toEndOf="@id/card_movie_thumbnail"
             app:layout_constraintTop_toTopOf="@id/card_movie_thumbnail"
             tools:text="Dark Phoenix" />
@@ -58,10 +75,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_normal"
             android:text="@{movie.releaseDate}"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/end_grid"
             app:layout_constraintStart_toStartOf="@id/text_movie_title"
             app:layout_constraintTop_toBottomOf="@id/text_movie_title"
             tools:text="2019-06-05" />
@@ -70,13 +86,12 @@
             android:id="@+id/recycler_movie_genre_tags"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/spacing_normal"
             android:layout_marginBottom="@dimen/margin_normal"
             android:orientation="horizontal"
             app:genreTags="@{movie.genres}"
             app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/end_grid"
             app:layout_constraintStart_toStartOf="@id/text_movie_title"
             app:layout_constraintTop_toBottomOf="@id/text_movie_release_date"
             tools:listitem="@layout/list_item_genre_tag" />

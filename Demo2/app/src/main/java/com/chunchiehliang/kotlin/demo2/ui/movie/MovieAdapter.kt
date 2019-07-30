@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.demo2.R
 import com.chunchiehliang.kotlin.demo2.databinding.ListItemMovieBinding
 import com.chunchiehliang.kotlin.demo2.domain.Movie
+import timber.log.Timber
 
 class MovieAdapter(val onClickListener: MovieListener) : ListAdapter<Movie, MovieAdapter.MovieItemViewHolder>(DiffCallback) {
 
     class MovieItemViewHolder(val binding: ListItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Movie) {
+            Timber.d("movie genres: ${item.genreIds}")
             binding.movie = item
             binding.executePendingBindings()
         }
@@ -33,7 +35,7 @@ class MovieAdapter(val onClickListener: MovieListener) : ListAdapter<Movie, Movi
         holder.itemView.setOnClickListener { onClickListener.onClick(movie) }
     }
 
-    fun from(parent: ViewGroup): MovieItemViewHolder {
+    private fun from(parent: ViewGroup): MovieItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view: ListItemMovieBinding =
             DataBindingUtil.inflate(layoutInflater, R.layout.list_item_movie, parent, false)

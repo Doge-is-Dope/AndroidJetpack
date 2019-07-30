@@ -8,17 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://api.themoviedb.org/3/"
-
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL)
-    .build()
-
 
 interface MovieApiService {
     @GET("movie/now_playing")
@@ -35,7 +24,7 @@ interface MovieApiService {
     ): NetworkGenreContainer
 
     @GET("movie/{movie_id}")
-    suspend fun getMovie(
+    suspend fun getMovieDetail(
         @Path("movie_id") id: Int,
         @Query("api_key") apiKey: String,
         @Query("language") language: String
@@ -43,6 +32,17 @@ interface MovieApiService {
 }
 
 object MovieApi {
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
+
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+    private val retrofit = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(BASE_URL)
+        .build()
+
     val retrofitService: MovieApiService by lazy {
         retrofit.create(MovieApiService::class.java)
     }
