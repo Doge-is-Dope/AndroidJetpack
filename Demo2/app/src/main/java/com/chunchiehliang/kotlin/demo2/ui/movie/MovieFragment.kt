@@ -50,7 +50,7 @@ class MovieFragment : Fragment() {
 
         viewModel.movieList.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                    adapter.submitList(it)
             }
         })
 

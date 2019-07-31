@@ -34,11 +34,11 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="@dimen/margin_normal" />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.MaterialComponents.CardView"
             android:id="@+id/card_movie_thumbnail"
             android:layout_width="0dp"
             android:layout_height="180dp"
-            app:cardCornerRadius="@dimen/spacing_normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="27:40"
             app:layout_constraintStart_toEndOf="@id/start_grid"
@@ -48,13 +48,13 @@
                 android:id="@+id/image_movie_thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/filter_sheet_background"
+                android:background="@drawable/bg_sheet_background"
                 android:contentDescription="@string/image_description_movie"
                 android:scaleType="centerCrop"
                 app:posterImageUrl="@{movie.posterPath}"
                 tools:src="@color/light_grey" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/text_movie_title"

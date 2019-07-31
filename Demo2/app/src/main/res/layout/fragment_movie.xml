@@ -50,20 +50,5 @@
             app:listData="@{viewModel.movieList}"
             tools:listitem="@layout/list_item_movie" />
 
-
-        <fragment
-            android:id="@+id/filter_sheet"
-            android:name="com.chunchiehliang.kotlin.demo2.ui.TestFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="4dp"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-            app:behavior_hideable="true"
-            app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
-            app:behavior_skipCollapsed="true"
-            tools:layout="@layout/fragment_test" />
-
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

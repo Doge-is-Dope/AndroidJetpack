@@ -12,7 +12,7 @@ buildscript {
         version_lifecycle = "2.0.0"
         version_moshi = "1.8.0"
         version_material_design = "1.1.0-alpha07" // bug: don't update to alpha08
-        version_navigation = "1.0.0"
+        version_navigation = "2.1.0-beta02"
         version_recyclerview = "1.0.0"
         version_retrofit = "2.6.0"
         version_room = "2.1.0"
@@ -27,7 +27,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$version_gradle"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"
-        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

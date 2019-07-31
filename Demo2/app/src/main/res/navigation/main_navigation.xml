@@ -31,9 +31,10 @@
             app:argType="long" />
     </fragment>
 
-    <fragment
+    <dialog
         android:id="@+id/testFragment"
-        android:name="com.chunchiehliang.kotlin.demo2.ui.TestFragment"
+        android:name="com.chunchiehliang.kotlin.demo2.ui.filter.FilterFragment"
         android:label="fragment_test"
-        tools:layout="@layout/fragment_test" />
+        tools:layout="@layout/fragment_filter" />
+
 </navigation>

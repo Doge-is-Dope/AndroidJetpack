@@ -18,7 +18,6 @@
 
     <style name="AppTheme.LightNav" parent="AppTheme.NoActionBar" />
 
-
     <style name="Widget.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
         <item name="backgroundTint">@color/white_90</item>
     </style>
@@ -30,6 +29,7 @@
         <item name="android:lines">1</item>
         <item name="android:textAppearance">@style/TextAppearance.Demo.Tag</item>
     </style>
+
 
     <style name="Widget.Demo.AppBar" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
         <item name="android:fontFamily">@font/work_sans</item>

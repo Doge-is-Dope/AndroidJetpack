@@ -34,25 +34,25 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <!--<com.google.android.material.bottomappbar.BottomAppBar-->
-            <!--android:id="@+id/bottom_app_bar"-->
-            <!--style="@style/Widget.BottomAppBar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?actionBarSize"-->
-            <!--android:layout_gravity="bottom"-->
-            <!--app:elevation="6dp"-->
-            <!--app:fabAlignmentMode="end"-->
-            <!--app:hideOnScroll="true"-->
-            <!--app:navigationIcon="@drawable/ic_launcher_foreground" />-->
+        <!--android:id="@+id/bottom_app_bar"-->
+        <!--style="@style/Widget.BottomAppBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?actionBarSize"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--app:elevation="6dp"-->
+        <!--app:fabAlignmentMode="end"-->
+        <!--app:hideOnScroll="true"-->
+        <!--app:navigationIcon="@drawable/ic_launcher_foreground" />-->
 
-        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
-            <!--android:id="@+id/fab_filter"-->
-            <!--style="@style/Widget.MaterialComponents.FloatingActionButton"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:contentDescription="@string/filter"-->
-            <!--app:fabSize="auto"-->
-            <!--app:layout_anchor="@id/bottom_app_bar"-->
-            <!--app:srcCompat="@drawable/ic_filter" />-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/margin_normal"
+            android:contentDescription="@string/filter"
+            app:fabSize="auto"
+            app:srcCompat="@drawable/ic_filter" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
