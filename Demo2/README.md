@@ -2,7 +2,7 @@
 
 - Taget API: 29 (Android Q)
 - Data Source: [TMDB](https://www.themoviedb.org/?language=en-US)
-![Screenshot](screenshots/list.png)
+![Screenshot](screenshots/list.png){:height="50%" width="50%"}
 
 
 ##### UI, Widgets
