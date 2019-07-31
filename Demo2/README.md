@@ -3,6 +3,9 @@
 - Taget API: 29 (Android Q)
 - Data Source: [TMDB](https://www.themoviedb.org/?language=en-US)
 ![Screenshot](screenshots/list.png){:height="50%" width="50%"}
+<p align="center">
+  <img src="https://github.com/chunchiehliang/AndroidJetpack/blob/master/Demo2/screenshots/list.png" width="256" title="Screenshot">
+</p>
 
 
 ##### UI, Widgets
