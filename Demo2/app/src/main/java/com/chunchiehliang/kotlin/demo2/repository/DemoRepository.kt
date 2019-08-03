@@ -17,25 +17,26 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class DemoRepository(private val database: DemoDatabase) {
-
-    val movies: LiveData<List<Movie>> = Transformations.map(database.movieDao.getCurrentMovies(), ::setupMovieGenres)
-
     val genres: LiveData<List<Genre>> = Transformations.map(database.genreDao.getGenres()) {
-        //        Timber.d("Movie List in database: $it")
+        Timber.d("Genre List in database: $it")
         it.asDomainModel()
     }
 
+    val movies: LiveData<List<Movie>> = Transformations.map(database.movieDao.getCurrentMovies(), ::setupMovieGenres)
+    
     private fun setupMovieGenres(databaseMovies: List<DatabaseMovie>): List<Movie> {
-        val movies = databaseMovies.asDomainModel()
         val genreMap = genres.value?.map { genre ->
             genre.id to genre
         }?.toMap()
+
+        val movies = databaseMovies.asDomainModel()
+
 
 
         movies.forEach {
             val movieGenreList = mutableListOf<Genre>()
 
-            for (id in it.genreIds) {
+            it.genreIds.forEach { id ->
                 genreMap?.get(id)?.let { genre -> movieGenreList.add(genre) }
             }
 
