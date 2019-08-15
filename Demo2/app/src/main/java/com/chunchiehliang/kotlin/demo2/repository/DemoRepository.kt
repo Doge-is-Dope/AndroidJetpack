@@ -23,7 +23,7 @@ class DemoRepository(private val database: DemoDatabase) {
     }
 
     val movies: LiveData<List<Movie>> = Transformations.map(database.movieDao.getCurrentMovies(), ::setupMovieGenres)
-    
+
     private fun setupMovieGenres(databaseMovies: List<DatabaseMovie>): List<Movie> {
         val genreMap = genres.value?.map { genre ->
             genre.id to genre
@@ -33,15 +33,16 @@ class DemoRepository(private val database: DemoDatabase) {
 
 
 
-        movies.forEach {
+        movies.forEach {movie ->
             val movieGenreList = mutableListOf<Genre>()
 
-            it.genreIds.forEach { id ->
+            movie.genreIds.forEach { id ->
                 genreMap?.get(id)?.let { genre -> movieGenreList.add(genre) }
             }
 
-            it.genres = movieGenreList
+            movie.genres = movieGenreList
         }
+
         return movies
     }
 
