@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.chunchiehliang.kotlin.demo2.R
 import com.chunchiehliang.kotlin.demo2.databinding.ListItemGenreTagBinding
-import com.chunchiehliang.kotlin.demo2.domain.Genre
+import com.chunchiehliang.kotlin.demo2.model.Genre
 
 class GenreAdapter : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
     var genres = emptyList<Genre>()

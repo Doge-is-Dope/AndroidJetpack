@@ -6,8 +6,8 @@ import com.chunchiehliang.kotlin.demo2.BuildConfig
 import com.chunchiehliang.kotlin.demo2.database.DatabaseMovie
 import com.chunchiehliang.kotlin.demo2.database.DemoDatabase
 import com.chunchiehliang.kotlin.demo2.database.asDomainModel
-import com.chunchiehliang.kotlin.demo2.domain.Genre
-import com.chunchiehliang.kotlin.demo2.domain.Movie
+import com.chunchiehliang.kotlin.demo2.model.Genre
+import com.chunchiehliang.kotlin.demo2.model.Movie
 import com.chunchiehliang.kotlin.demo2.network.MovieApi
 import com.chunchiehliang.kotlin.demo2.network.asDatabaseModel
 import com.chunchiehliang.kotlin.demo2.network.asDomainModel

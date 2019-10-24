@@ -2,8 +2,8 @@ package com.chunchiehliang.kotlin.demo2.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.chunchiehliang.kotlin.demo2.domain.Genre
-import com.chunchiehliang.kotlin.demo2.domain.Movie
+import com.chunchiehliang.kotlin.demo2.model.Genre
+import com.chunchiehliang.kotlin.demo2.model.Movie
 
 @Entity
 data class DatabaseMovie(

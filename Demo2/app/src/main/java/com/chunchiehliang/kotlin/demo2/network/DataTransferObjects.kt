@@ -3,8 +3,8 @@ package com.chunchiehliang.kotlin.demo2.network
 import android.os.Parcelable
 import com.chunchiehliang.kotlin.demo2.database.DatabaseGenre
 import com.chunchiehliang.kotlin.demo2.database.DatabaseMovie
-import com.chunchiehliang.kotlin.demo2.domain.Genre
-import com.chunchiehliang.kotlin.demo2.domain.Movie
+import com.chunchiehliang.kotlin.demo2.model.Genre
+import com.chunchiehliang.kotlin.demo2.model.Movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize

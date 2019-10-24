@@ -7,7 +7,7 @@
 
         <variable
             name="genre"
-            type="com.chunchiehliang.kotlin.demo2.domain.Genre" />
+            type="com.chunchiehliang.kotlin.demo2.model.Genre" />
     </data>
 
     <TextView

@@ -3,7 +3,6 @@ package com.chunchiehliang.kotlin.demo2.viewmodel
 import android.app.Application
 import androidx.lifecycle.*
 import com.chunchiehliang.kotlin.demo2.database.getDatabase
-import com.chunchiehliang.kotlin.demo2.domain.Movie
 import com.chunchiehliang.kotlin.demo2.repository.DemoRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

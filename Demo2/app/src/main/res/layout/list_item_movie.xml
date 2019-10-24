@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.chunchiehliang.kotlin.demo2.domain.Movie" />
+            type="com.chunchiehliang.kotlin.demo2.model.Movie" />
     </data>
 
 

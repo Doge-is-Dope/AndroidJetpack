@@ -8,7 +8,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.chunchiehliang.kotlin.demo2.database.DemoDatabase
 import com.chunchiehliang.kotlin.demo2.database.asDomainModel
 import com.chunchiehliang.kotlin.demo2.database.dao.MovieDao
-import com.chunchiehliang.kotlin.demo2.domain.Movie
+import com.chunchiehliang.kotlin.demo2.model.Movie
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

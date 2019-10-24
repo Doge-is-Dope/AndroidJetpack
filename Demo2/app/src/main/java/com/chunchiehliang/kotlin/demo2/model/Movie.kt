@@ -1,6 +1,4 @@
-package com.chunchiehliang.kotlin.demo2.domain
-
-import timber.log.Timber
+package com.chunchiehliang.kotlin.demo2.model
 
 data class Movie(
     val id: Long,
