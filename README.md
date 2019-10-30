@@ -10,6 +10,7 @@ Target SDK version: 29 (Q)
 - [ViewModel, LiveData & DataBinding](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Architecture)
 - [Room](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Room)
 - [Paging](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Paging)
+- [Notifications](https://github.com/chunchiehliang/AndroidJetpack/tree/master/Notifications)
 
 
 
