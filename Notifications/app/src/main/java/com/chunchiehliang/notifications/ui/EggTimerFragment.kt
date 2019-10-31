@@ -15,16 +15,19 @@ import androidx.lifecycle.ViewModelProvider
 import com.chunchiehliang.notifications.R
 
 import com.chunchiehliang.notifications.databinding.FragmentEggTimerBinding
+import timber.log.Timber
 
 class EggTimerFragment : Fragment() {
 
     private val TOPIC = "breakfast"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        Timber.d("onCreate()")
         val binding: FragmentEggTimerBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_egg_timer, container, false
         )

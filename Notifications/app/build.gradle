@@ -39,6 +39,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc01'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc01'
 
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     //for fcm
     implementation 'com.google.firebase:firebase-core:17.2.0'
     implementation 'com.google.firebase:firebase-iid:20.0.0'
